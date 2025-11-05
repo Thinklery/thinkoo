@@ -25,6 +25,32 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+### Commands to run project
+
+Step 1: Navigate into the project directory
+
+```bash
+cd thinkoo
+```
+
+Step 2: Run the project in preferred mode
+
+```bash
+npm run android
+```
+
+OR
+
+```bash
+npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
+```
+
+OR
+
+```bash
+npm run web
+```
+
 ## Get a fresh project
 
 When you're ready, run:
