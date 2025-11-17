@@ -2,6 +2,22 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Setting Up
+
+We will be using EAS for development. To do so, we will be required to install the eas-cli accordingly.
+
+```bash
+npm install -g eas-cli
+
+eas login
+
+# Run the command when pushing to the EAS Remote server. 
+# Note that due to the absense of Apple Developer Account, we are currently unable to push to the EAS Remote Server for IOS. 
+eas init
+
+eas build --profile development --platform android
+```
+
 ## Get started
 
 1. Install dependencies
