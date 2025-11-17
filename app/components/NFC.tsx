@@ -9,7 +9,6 @@ const NFC = () => {
 
   async function readTag() {
     try {
-      await NfcManager.getTag();
       const tag = await NfcManager.getTag(NfcTech.Ndef);
 			setTagData(tag);
       console.log("Tag found:", tag);
