@@ -13,7 +13,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-   npx expo start
+   npm run start
    ```
 
 In the output, you'll find options to open the app in a
@@ -27,13 +27,7 @@ You can start developing by editing the files inside the **app** directory. This
 
 ### Commands to run project
 
-Step 1: Navigate into the project directory
-
-```bash
-cd thinkoo
-```
-
-Step 2: Run the project in preferred mode
+Step 1: Run the project in preferred mode
 
 ```bash
 npm run android
@@ -51,15 +45,25 @@ OR
 npm run web
 ```
 
-## Get a fresh project
+## Setting Up Development Mode
 
-When you're ready, run:
+We will be using EAS for real-time tracking. To do this, we need to install the `eas-cli` if it isn't already installed. You can install it by running:
 
 ```bash
-npm run reset-project
+npm install -g eas-cli
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Below are the commands for logging in, initializing, and building the code in EAS.
+
+```bash
+eas login
+
+# Run the command when pushing to the EAS remote server.
+# Note: Due to the absence of an Apple Developer Account, we are currently unable to push to the EAS remote server for iOS.
+eas init
+
+eas build --profile development --platform android
+```
 
 ## Learn more
 
