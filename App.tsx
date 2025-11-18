@@ -1,191 +1,102 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import NfcManager, {
-  NfcEvents,
-  NfcTech,
-  Ndef,
-} from 'react-native-nfc-manager';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import NfcScreen from './NfcScreen';
 
-async function checkNfcEnabled() {
-  const isSupported = await NfcManager.isSupported();
-  if (!isSupported) {
-    console.log('NFC is not supported on this device');
-    return;
-  }
+function LoginScreen({ navigation }: any) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  console.log('NFC is supported on this device');
-
-  const enabled = await NfcManager.isEnabled();
-  if (!enabled) {
-    console.log('NFC is not enabled');
-  } else {
-    console.log('NFC is enabled');
-  }
-}
-
-// === CONFIG FOR YOUR CLASSIC DATA ====================
-const CLASSIC_KEY_HEX = 'FFFFFFFFFFFF'; // <- put your 6-byte key here (hex string)
-const CLASSIC_SECTOR = 1;              // <- sector index you wrote to
-// =====================================================
-
-function hexKeyToBytes(hex: string): number[] {
-  if (hex.length !== 12) {
-    throw new Error('Key must be 12 hex characters (6 bytes)');
-  }
-  const bytes: number[] = [];
-  for (let i = 0; i < hex.length; i += 2) {
-    bytes.push(parseInt(hex.slice(i, i + 2), 16));
-  }
-  return bytes;
-}
-
-async function readClassicBlock() {
-  try {
-    console.log('Waiting for Mifare Classic tag…');
-
-    // Ask Android to give us a Classic tag
-    await NfcManager.requestTechnology(NfcTech.MifareClassic, {
-      alertMessage: 'Hold the plushie near the phone',
-    });
-
-    const tag = await NfcManager.getTag();
-    console.log('Classic tag detected:', tag);
-
-    const mc = NfcManager.mifareClassicHandlerAndroid;
-    const key = hexKeyToBytes(CLASSIC_KEY_HEX);
-
-    // 1) Authenticate this sector with Key A
-    await mc.mifareClassicAuthenticateA(CLASSIC_SECTOR, key);
-    console.log(`Authenticated sector ${CLASSIC_SECTOR} with Key A`);
-
-    // 2) Convert sector + block-in-sector to absolute block index
-    const firstBlockInSector = await mc.mifareClassicSectorToBlock(
-      CLASSIC_SECTOR,
-    );
-    
-    // 3) Read that 16-byte block
-    const blockData = await mc.mifareClassicReadBlock(firstBlockInSector);
-    console.log('Raw Classic block bytes:', blockData);
-
-    // 4) Convert bytes to string (assuming you stored plain text)
-    const text = Ndef.util.bytesToString(blockData as any);
-    console.log('Decoded Classic text:', text);
-
-    return text;
-  } catch (e) {
-    console.warn('readClassicBlock error:', e);
-    return null;
-  } finally {
-    // Always clean up
-    NfcManager.cancelTechnologyRequest().catch(() => {});
-  }
-}
-
-function App() {
-  const [listening, setListening] = useState(false);
-  const [lastClassicText, setLastClassicText] = useState<string | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      console.log('Starting NFC manager');
-      await NfcManager.start();
-      console.log('NFC manager started');
-      await checkNfcEnabled();
-    })();
-
-    // listener for discovered tags
-    const onTagDiscovered = (tag: any) => {
-      console.log('onTagDiscovered fired');
-      console.warn('Tag found', tag);
-      console.log('Tag ID', tag.id);
-      console.log('Tag NDEF', tag.ndefMessage);
-      console.log('Tag techTypes', tag.techTypes);
-      // you can store tag.id here if you want
-    };
-
-    NfcManager.setEventListener(NfcEvents.DiscoverTag, onTagDiscovered);
-
-    return () => {
-      console.log('Cleaning up NFC');
-      NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
-      NfcManager.unregisterTagEvent().catch(() => {});
-    };
-  }, []);
-
-  async function startListening() {
-    try {
-      if (listening) {
-        return;
-      }
-
-      console.log('Calling registerTagEvent');
-      await NfcManager.registerTagEvent();
-      console.log('registerTagEvent resolved okay');
-
-      setListening(true);
-      console.log('Started listening for NFC tags');
-    } catch (ex) {
-      console.warn('Oops (startListening)!', ex);
+  const handleLogin = () => {
+    if (username && password) {
+      navigation.replace('Home');
+    } else {
+      alert('Please fill in username and password');
     }
-  }
-
-  async function stopListening() {
-    try {
-      console.log('Calling unregisterTagEvent');
-      await NfcManager.unregisterTagEvent();
-      setListening(false);
-      console.log('Stopped listening for NFC tags');
-    } catch (ex) {
-      console.warn('Oops (stopListening)!', ex);
-    }
-  }
-
-  async function handleReadClassicPressed() {
-    const text = await readClassicBlock();
-    if (text != null) {
-      setLastClassicText(text);
-    }
-  }
+  };
 
   return (
-    <View style={styles.wrapper}>
-      {!listening ? (
-        <TouchableOpacity onPress={startListening}>
-          <Text>Start listening for NFC</Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity onPress={stopListening}>
-          <Text>Stop listening</Text>
-        </TouchableOpacity>
-      )}
-
-      <Text style={{ marginTop: 16 }}>
-        {listening
-          ? 'Bring an NFC tag near the phone…'
-          : 'Press the button to start listening.'}
-      </Text>
-
-      <TouchableOpacity
-        onPress={handleReadClassicPressed}
-        style={{ marginTop: 24 }}
-      >
-        <Text>Read Classic plushie data</Text>
+    <View style={styles.centered}>
+      <Text>Login Screen</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <TouchableOpacity onPress={handleLogin} style={styles.button}>
+        <Text>Login</Text>
       </TouchableOpacity>
-
-      {lastClassicText != null && (
-        <Text style={{ marginTop: 8 }}>
-          Last Classic text: {lastClassicText}
-        </Text>
-      )}
     </View>
   );
 }
 
+// Dummy home screen
+function HomeScreen({ navigation }: any) {
+  return (
+    <View style={styles.centered}>
+      <Text>Home Screen</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('NFC')} style={styles.button}>
+        <Text>Go to NFC Screen</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+// Setting up tab navigation for NFC screen
+const Tab = createBottomTabNavigator();
+
+function HomeTabNavigator() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="NFC" component={NfcScreen} />
+    </Tab.Navigator>
+  );
+}
+
+// Stack navigator for the Login screen and the Home Tab Navigator
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={HomeTabNavigator} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+// Styling
 const styles = StyleSheet.create({
-  wrapper: {
+  centered: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  input: {
+    height: 40,
+    width: '80%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingLeft: 8,
+  },
+  button: {
+    backgroundColor: '#4CAF50',
+    padding: 10,
+    marginTop: 10,
   },
 });
 
