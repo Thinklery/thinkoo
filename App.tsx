@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import NfcManager from 'react-native-nfc-manager';
+import NfcManager, { NfcEvents } from 'react-native-nfc-manager';
 
 async function checkNfcEnabled() {
   const isSupported = await NfcManager.isSupported();
@@ -23,15 +23,27 @@ function App() {
   const [listening, setListening] = useState(false);
 
   useEffect(() => {
-    // Start NFC once when the component mounts
     (async () => {
+      console.log('Starting NFC manager');
       await NfcManager.start();
       console.log('NFC manager started');
       await checkNfcEnabled();
     })();
 
-    // Optional clean up on unmount
+    // listener for discovered tags
+    const onTagDiscovered = (tag: any) => {
+      console.log('onTagDiscovered fired');
+      console.warn('Tag found', tag);
+      console.log('Tag ID', tag.id);
+      console.log('Tag NDEF', tag.ndefMessage);
+      // send to Supabase here
+    };
+
+    NfcManager.setEventListener(NfcEvents.DiscoverTag, onTagDiscovered);
+
     return () => {
+      console.log('Cleaning up NFC');
+      NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
       NfcManager.unregisterTagEvent().catch(() => {});
     };
   }, []);
@@ -42,11 +54,9 @@ function App() {
         return;
       }
 
-      // registerTagEvent keeps listening for tags
-      await NfcManager.registerTagEvent(tag => {
-        console.warn('Tag found', tag);
-        // here you can send to Supabase etc.
-      });
+      console.log('Calling registerTagEvent');
+      await NfcManager.registerTagEvent();
+      console.log('registerTagEvent resolved okay');
 
       setListening(true);
       console.log('Started listening for NFC tags');
@@ -57,6 +67,7 @@ function App() {
 
   async function stopListening() {
     try {
+      console.log('Calling unregisterTagEvent');
       await NfcManager.unregisterTagEvent();
       setListening(false);
       console.log('Stopped listening for NFC tags');
