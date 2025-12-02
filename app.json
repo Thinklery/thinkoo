@@ -9,7 +9,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "bundleIdentifier": "com.anonymous.thinkoo",
+      "bundleIdentifier": "com.thinklery.thinkoo",
       "supportsTablet": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -30,7 +30,7 @@
       "package": "com.anonymous.thinkoo"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -47,7 +47,8 @@
           }
         }
       ],
-      "react-native-nfc-manager"
+      "react-native-nfc-manager",
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -56,8 +57,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "16b39a5a-ccac-4063-8295-92517d9bf3cb"
+        "projectId": "5be95410-b296-4c95-bbd8-4c270158852b"
       }
-    }
+    },
+    "owner": "frewin"
   }
 }
