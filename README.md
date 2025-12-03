@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# Welcome to Thinkoo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is the mobile application for Thinklery.
 
 ## Get started
 
@@ -10,71 +10,29 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Login to EAS Build
 
    ```bash
-   npm run start
+   eas login
    ```
 
-In the output, you'll find options to open the app in a
+## Building the Application
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### For Android Build
+
+The steps to [run the cloud build](https://docs.expo.dev/tutorial/eas/android-development-build/) for Android is as follows:
+
+1. Run the eas build using the following command
+
+   ```bash
+   eas build --platform android --profile development
+   ```
+
+## More Information
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-### Commands to run project
-
-Step 1: Run the project in preferred mode
-
-```bash
-npm run android
-```
-
-OR
-
-```bash
-npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
-```
-
-OR
-
-```bash
-npm run web
-```
-
-## Setting Up Development Mode
-
-We will be using EAS for real-time tracking. To do this, we need to install the `eas-cli` if it isn't already installed. You can install it by running:
-
-```bash
-npm install -g eas-cli
-```
-
-Below are the commands for logging in, initializing, and building the code in EAS.
-
-```bash
-eas login
-
-# Run the command when pushing to the EAS remote server.
-# Note: Due to the absence of an Apple Developer Account, we are currently unable to push to the EAS remote server for iOS.
-eas init
-
-eas build --profile development --platform android
-```
-
-## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
 
 - [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
 - [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
