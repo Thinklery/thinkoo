@@ -54,12 +54,6 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "5be95410-b296-4c95-bbd8-4c270158852b"
-      }
-    },
-    "owner": "frewin"
+    "owner": "thinkoo"
   }
 }
