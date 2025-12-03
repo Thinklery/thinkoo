@@ -1,4 +1,4 @@
-name: Formatting and lint checks
+name: Formatting checks
 
 on:
   push:
