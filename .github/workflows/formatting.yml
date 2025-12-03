@@ -1,7 +1,6 @@
 name: Formatting checks
 
 on:
-  push:
   pull_request:
 
 jobs:
