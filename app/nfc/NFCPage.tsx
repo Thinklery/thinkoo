@@ -9,7 +9,7 @@ import usePlushieStore from "@/utils/usePlushieStore";
 
 const NFCPage = () => {
   const NfcId = useNfcStore((state) => state.NfcId);
-	const plushies = usePlushieStore((state) => state.plushies)
+  const plushies = usePlushieStore((state) => state.plushies);
 
   return (
     <Background>

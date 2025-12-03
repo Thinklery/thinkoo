@@ -1,12 +1,12 @@
 // screens/LoginScreen.tsx
-import React, { useContext, useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
-import { AuthContext } from '../components/AuthContext';
+import React, { useContext, useState } from "react";
+import { View, TextInput, Button, Text, StyleSheet } from "react-native";
+import { AuthContext } from "../components/AuthContext";
 
 const LoginScreen = ({ navigation }: any) => {
   const { login, signUp } = useContext(AuthContext)!;
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null); // To store error messages
   const [successMessage, setSuccessMessage] = useState<string | null>(null); // To store success message
 
@@ -16,7 +16,7 @@ const LoginScreen = ({ navigation }: any) => {
     try {
       await login(email, password);
     } catch (err: any) {
-      setError('Invalid login credentials'); // Handle error and display it
+      setError("Invalid login credentials"); // Handle error and display it
     }
   };
 
@@ -25,12 +25,12 @@ const LoginScreen = ({ navigation }: any) => {
     setSuccessMessage(null); // Reset success message
     try {
       await signUp(email, password);
-      setSuccessMessage('Sign up successful'); // Show success message
+      setSuccessMessage("Sign up successful"); // Show success message
     } catch (err: any) {
-      if (err.message.includes('Password should be at least 6 characters')) {
-        setError('Password should be at least 6 characters');
+      if (err.message.includes("Password should be at least 6 characters")) {
+        setError("Password should be at least 6 characters");
       } else {
-        setError('Something went wrong during sign up');
+        setError("Something went wrong during sign up");
       }
     }
   };
@@ -52,9 +52,12 @@ const LoginScreen = ({ navigation }: any) => {
       />
       <Button title="Login" onPress={handleLogin} />
       <Button title="Sign Up" onPress={handleSignUp} />
-      
-      {error && <Text style={styles.errorText}>{error}</Text>} {/* Display error */}
-      {successMessage && <Text style={styles.successText}>{successMessage}</Text>} {/* Display success message */}
+      {error && <Text style={styles.errorText}>{error}</Text>}{" "}
+      {/* Display error */}
+      {successMessage && (
+        <Text style={styles.successText}>{successMessage}</Text>
+      )}{" "}
+      {/* Display success message */}
     </View>
   );
 };
@@ -62,25 +65,25 @@ const LoginScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     padding: 20,
   },
   input: {
     height: 40,
-    borderColor: 'grey',
+    borderColor: "grey",
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 8,
   },
   errorText: {
-    color: 'red',
+    color: "red",
     marginTop: 10,
-    textAlign: 'center',
+    textAlign: "center",
   },
   successText: {
-    color: 'green',
+    color: "green",
     marginTop: 10,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 

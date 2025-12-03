@@ -19,13 +19,13 @@ module.exports = defineConfig([
         project: [
           "./tsconfig.json",
           "./apps/*/tsconfig.json",
-          "./packages/*/tsconfig.json"
-        ]
-      }
+          "./packages/*/tsconfig.json",
+        ],
+      },
     },
 
     plugins: {
-      "@typescript-eslint": tseslint
+      "@typescript-eslint": tseslint,
     },
   },
 
@@ -33,6 +33,6 @@ module.exports = defineConfig([
 
   {
     plugins: { "react-native": reactNative },
-    rules: reactNative.configs.all.rules
-  }
+    rules: reactNative.configs.all.rules,
+  },
 ]);

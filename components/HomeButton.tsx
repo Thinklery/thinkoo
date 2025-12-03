@@ -7,8 +7,13 @@ const imageMap: Record<string, any> = {
   home: require("@/assets/images/home_inactive.png"),
 };
 
-
-const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) => {
+const HomeButton = ({
+  onPress,
+  type,
+}: {
+  onPress: () => void;
+  type: string;
+}) => {
   const router = useRouter();
 
   return (
@@ -21,7 +26,7 @@ const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) =>
         }}
       >
         <Image
-          source={imageMap[type]}// Your custom PNG
+          source={imageMap[type]} // Your custom PNG
           style={styles.image}
           resizeMode="contain"
         />

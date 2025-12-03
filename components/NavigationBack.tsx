@@ -17,7 +17,7 @@ const NavigationBack = ({
   return (
     <View style={styles.buttonsRow}>
       <BackButton type={backType ?? "backBordered"} onPress={() => back?.()} />
-      <HomeButton type={homeType ?? "homeBordered"}  onPress={() => home?.()} />
+      <HomeButton type={homeType ?? "homeBordered"} onPress={() => home?.()} />
     </View>
   );
 };

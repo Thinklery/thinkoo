@@ -3,11 +3,11 @@ import { supabase } from "@/utils/supabaseClient";
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const nfcId = url.searchParams.get("nfcId");
-	console.log("Received nfcId:", nfcId)
+  console.log("Received nfcId:", nfcId);
   if (!nfcId) {
     return Response.json(
       { error: "nfcId query parameter is required" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 

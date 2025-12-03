@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
   content: {
     alignSelf: "center",
     width: "90%",
-		height: "30%",
-		marginTop: "20%"
+    height: "30%",
+    marginTop: "20%",
   },
   progress: {
     flexDirection: "row",

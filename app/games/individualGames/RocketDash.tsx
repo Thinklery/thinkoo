@@ -202,6 +202,4 @@ const RocketDash = () => {
 
 export default RocketDash;
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});

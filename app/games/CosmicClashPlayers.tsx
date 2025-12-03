@@ -7,7 +7,7 @@ import PlayerBox from "@/components/PlayerBox";
 
 const CosmicClashPlayers = () => {
   return (
-    <Background containerStyle={{gap: 20}}>
+    <Background containerStyle={{ gap: 20 }}>
       <NavigationBack />
       <View>
         <PlayerBox player="player1" />

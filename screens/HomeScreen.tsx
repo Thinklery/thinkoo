@@ -1,7 +1,7 @@
 // screens/HomeScreen.tsx
-import React, { useContext } from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
-import { AuthContext } from '../components/AuthContext';
+import React, { useContext } from "react";
+import { View, Button, Text, StyleSheet } from "react-native";
+import { AuthContext } from "../components/AuthContext";
 
 const HomeScreen = () => {
   const { user, logout } = useContext(AuthContext)!;
@@ -11,7 +11,7 @@ const HomeScreen = () => {
       {user ? (
         <>
           {/* Check if 'user' is not null before accessing 'email' */}
-          <Text>Welcome, {user?.user?.email || 'No email found'}</Text>
+          <Text>Welcome, {user?.user?.email || "No email found"}</Text>
           <Button title="Logout" onPress={logout} />
         </>
       ) : (
@@ -25,8 +25,8 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

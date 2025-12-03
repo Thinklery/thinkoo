@@ -6,19 +6,19 @@ export async function POST(req: Request) {
     const { data: newPlushie, error: insertError } = await supabase
       .from("plushies")
       .insert([
-        {	
+        {
           name,
           level: 0,
           xp: 0,
-					nfc_id: nfcId
+          nfc_id: nfcId,
         },
       ])
       .select()
       .single();
 
     if (insertError) {
-			console.log(insertError)
-		};
+      console.log(insertError);
+    }
 
     return Response.json({ data: newPlushie }, { status: 200 });
   } catch (e) {
