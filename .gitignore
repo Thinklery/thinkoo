@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+.vscode/
 
 # Expo
 .expo/
@@ -41,7 +42,3 @@ app-example
 # generated native folders
 /ios
 /android
-
-# IDEs and editors
-.vscode/
-.idea/
