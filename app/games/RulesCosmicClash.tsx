@@ -28,7 +28,7 @@ export default RulesCosmicClash;
 const styles = StyleSheet.create({
   contents: {
     alignItems: "center",
-    width: "100%"
+    width: "100%",
   },
   image: {
     width: "80%",

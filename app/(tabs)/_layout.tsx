@@ -82,7 +82,7 @@ export default _layout;
 
 const styles = StyleSheet.create({
   TabIconContainer: {
-    flexDirection: "column", 
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   },

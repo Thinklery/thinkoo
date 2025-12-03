@@ -19,9 +19,9 @@ export async function POST(req: Request) {
 
     if (insertError) throw insertError;
 
-    return Response.json({data: newPlushie}, {status: 200})
+    return Response.json({ data: newPlushie }, { status: 200 });
   } catch (e) {
-		console.log("Unable to get backend", e)
-		return Response.json({error: String(e)}, {status: 200})
-	}
+    console.log("Unable to get backend", e);
+    return Response.json({ error: String(e) }, { status: 200 });
+  }
 }
