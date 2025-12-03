@@ -28,6 +28,34 @@ The steps to [run the cloud build](https://docs.expo.dev/tutorial/eas/android-de
    eas build --platform android --profile development
    ```
 
+## Linting and Checks
+
+There will be linting and formatting checks in the CI pipeline to ensure the code quality of the repository. To run the respective checks, use the following command:
+
+1. Run Linting Checks
+
+   ```bash
+   npm run lint
+   ```
+
+2. Fix fixable Linting Issues
+
+   ```bash
+   npm run lint:fix
+   ```
+
+3. Run Formatting Checks
+
+   ```bash
+   npm run format:check
+   ```
+
+4. Fix Formatting Issues
+
+   ```bash
+   npm run format
+   ```
+
 ## More Information
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
