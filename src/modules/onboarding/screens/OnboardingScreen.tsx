@@ -6,7 +6,7 @@ import Page5 from "@/components/onboarding/Page5";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 import { View, StyleSheet } from "react-native";
 
-const Onboarding = () => {
+const OnboardingScreen = () => {
   const currentPage = useOnboardingStore((state) => state.currentPage);
   return (
     <View style={styles.container}>
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Onboarding;
+export default OnboardingScreen;
