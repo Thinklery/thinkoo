@@ -18,17 +18,46 @@ This is the mobile application for Thinklery.
 
 ## For Development
 
-Navigate to `eas.json` file in the root directory. Under build -> development, set the development client to `true` accordingly.
+To enable development mode with live reloading and access to the Metro bundler, you need to set `"developmentClient": true` in your `eas.json` file under the `build -> development` profile. This allows you to use features like hot reloading and debugging tools during development.
 
-```bash
-# For viewing development changes on the fly.
+- Set `"developmentClient": true` when you want to build a development version of the app that connects to the local Metro bundler and supports live updates. This is useful for rapid development and testing.
+- Set `"developmentClient": false` for production or preview builds, where you do not need live reloading or Metro bundler connectivity.
+
+Example configuration in `eas.json`:
+
+```json
+// Development build profile
 "developmentClient": true
 
-# Default
+// Production build profile
 "developmentClient": false
 ```
 
-Note: The command `npm start` is required to run the app when `"developmentClient": true` is being set.
+Complete Development Workflow
+
+1. Set `"developmentClient": true` in your `eas.json` under the desired build profile (usually `development`).
+2. Build the app for development using EAS Build:
+
+   ```bash
+   eas build --platform android --profile development
+   ```
+
+3. Install the built app on your device or emulator.
+4. Start the Metro bundler locally:
+
+   ```bash
+   npm start
+   ```
+
+5. Open the app on your device. It will connect to the Metro bundler, enabling hot reloading, live updates, and debugging tools.
+
+**What does the development client enable?**
+
+- Hot reloading: Instantly see code changes without rebuilding the app.
+- Metro bundler: Serves your JavaScript bundle and assets locally.
+- Debugging tools: Access React Native and Expo debugging features.
+
+For more details, see the [Expo Development Builds documentation](https://docs.expo.dev/develop/development-builds/create-a-build/).
 
 ## Building the Application
 
