@@ -13,7 +13,7 @@ const NFC = ({ index }: { index: number }) => {
   const setNfcId = useNfcStore((state) => state.setNfcId);
   const [tagData, setTagData] = React.useState<TagEvent | null>(null);
 
-  const [loading, setLoading] = useState<boolean>();
+  const [, setLoading] = useState<boolean>();
 
   useEffect(() => {
     NfcManager.start();
@@ -36,6 +36,7 @@ const NFC = ({ index }: { index: number }) => {
     }
   }
 
+  useEffect(() => {
   const fetchPlushie = async () => {
     setLoading(true);
     const data = await postPlushieInfo(String(tagData?.id), "Thinklery");
@@ -43,9 +44,11 @@ const NFC = ({ index }: { index: number }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
+  if (tagData?.id) {
     fetchPlushie();
-  }, [tagData?.id]);
+  }
+}, [tagData?.id, index, setPlushies]);
+
 
   return (
     <TouchableOpacity style={styles.container} onPress={readTag}>

@@ -25,7 +25,7 @@ const CosmicClash = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [turn, setTurn] = useState("Mars");
   const [winner, setWinner] = useState<string | null>(null);
-  const [powerUsed, setPowerUsed] = useState(false);
+  const [, setPowerUsed] = useState(false);
   const [turnNumber, setTurnNumber] = useState(0);
 
   const resetBoard = () => {
