@@ -16,6 +16,20 @@ This is the mobile application for Thinklery.
    eas login
    ```
 
+## For Development
+
+Navigate to `eas.json` file in the root directory. Under build -> development, set the development client to `true` accordingly.
+
+```bash
+# For viewing development changes on the fly.
+"developmentClient": true
+
+# Default
+"developmentClient": false
+```
+
+Note: The command `npm start` is required to run the app when `"developmentClient": true` is being set.
+
 ## Building the Application
 
 ### For Android Build
