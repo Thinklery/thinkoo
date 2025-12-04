@@ -1,8 +1,4 @@
-import {
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import { router } from "expo-router";
 

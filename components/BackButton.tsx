@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     height: 70,
     justifyContent: "center",
     width: 70, // Adjust size to fit your PNG
-
   },
   container: {
     alignItems: "flex-start", // top-left alignment

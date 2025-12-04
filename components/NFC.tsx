@@ -37,18 +37,17 @@ const NFC = ({ index }: { index: number }) => {
   }
 
   useEffect(() => {
-  const fetchPlushie = async () => {
-    setLoading(true);
-    const data = await postPlushieInfo(String(tagData?.id), "Thinklery");
-    setPlushies(data, index);
-    setLoading(false);
-  };
+    const fetchPlushie = async () => {
+      setLoading(true);
+      const data = await postPlushieInfo(String(tagData?.id), "Thinklery");
+      setPlushies(data, index);
+      setLoading(false);
+    };
 
-  if (tagData?.id) {
-    fetchPlushie();
-  }
-}, [tagData?.id, index, setPlushies]);
-
+    if (tagData?.id) {
+      fetchPlushie();
+    }
+  }, [tagData?.id, index, setPlushies]);
 
   return (
     <TouchableOpacity style={styles.container} onPress={readTag}>

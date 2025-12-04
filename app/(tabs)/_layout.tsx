@@ -1,12 +1,7 @@
 import CustomText from "@/components/CustomText";
 import { Tabs } from "expo-router";
 import React from "react";
-import {
-  ImageSourcePropType,
-  View,
-  Image,
-  StyleSheet
-} from "react-native";
+import { ImageSourcePropType, View, Image, StyleSheet } from "react-native";
 
 const TabIcon = ({
   activeSource,
@@ -82,7 +77,7 @@ export default _layout;
 const white = "#FFFFFF";
 
 const styles = StyleSheet.create({
-    TabBarText: {
+  TabBarText: {
     color: white,
     fontFamily: "Poppins-Regular",
     fontSize: 12,

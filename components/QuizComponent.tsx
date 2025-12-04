@@ -33,21 +33,15 @@ const QuizComponent = ({
       >
         <View style={styles.content}>
           {isCorrect ? (
-            <CustomText
-              style={styles.explanationText}
-            >
+            <CustomText style={styles.explanationText}>
               {popUpQuesions[0].explaination}
             </CustomText>
           ) : (
             <>
-              <CustomText
-                style={styles.explanationText}
-              >
+              <CustomText style={styles.explanationText}>
                 Answer one more to win the game!
               </CustomText>
-              <CustomText
-                style={styles.questionText} 
-              >
+              <CustomText style={styles.questionText}>
                 {currentQuestion.question}
               </CustomText>
               {currentQuestion.options.map((val, index) => (

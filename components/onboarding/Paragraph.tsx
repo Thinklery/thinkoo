@@ -11,16 +11,8 @@ const Paragraph = ({
 }) => {
   return (
     <View style={styles.CustomTextContainer}>
-      <CustomText
-        style={styles.MainHeaderText}
-      >
-        {mainHeader}
-      </CustomText>
-      <CustomText
-        style={styles.SubHeaderText}
-      >
-        {subHeader}
-      </CustomText>
+      <CustomText style={styles.MainHeaderText}>{mainHeader}</CustomText>
+      <CustomText style={styles.SubHeaderText}>{subHeader}</CustomText>
     </View>
   );
 };
@@ -45,5 +37,5 @@ const styles = StyleSheet.create({
     color: white,
     fontFamily: "Poppins-Regular",
     fontSize: 20,
-  }
+  },
 });

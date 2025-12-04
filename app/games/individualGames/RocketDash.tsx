@@ -130,53 +130,44 @@ const RocketDash = () => {
         {asteroids.map((a) => (
           <View
             key={`asteroid-${a.id}`}
-            style={[styles.Asteroid, 
-            {
-              left: a.x,
-              top: a.y,
-              width: asteroidSize,
-              height: asteroidSize,
-            },]}
+            style={[
+              styles.Asteroid,
+              {
+                left: a.x,
+                top: a.y,
+                width: asteroidSize,
+                height: asteroidSize,
+              },
+            ]}
           >
             <Image
               source={require("@/assets/images/asteroid.png")}
               style={{ width: asteroidSize, height: asteroidSize }}
               resizeMode="contain"
             />
-            <CustomText
-              style={styles.AsteriodText}
-            >
-              {a.number}
-            </CustomText>
+            <CustomText style={styles.AsteriodText}>{a.number}</CustomText>
           </View>
         ))}
 
         {/* Spaceship */}
         <Image
           source={require("@/assets/images/rocket.png")}
-          style={[styles.RocketContainer, {
-            left: spaceshipX.current,
-            top: layoutHeight - rocketSize,
-            width: rocketSize,
-            height: rocketSize,
-          }]}
+          style={[
+            styles.RocketContainer,
+            {
+              left: spaceshipX.current,
+              top: layoutHeight - rocketSize,
+              width: rocketSize,
+              height: rocketSize,
+            },
+          ]}
           resizeMode="contain"
         />
 
         {/* Score and Task */}
-        <View
-          style={styles.ScoreView}
-        >
-          <CustomText
-            style={styles.Text}
-          >
-            Score: {score}
-          </CustomText>
-          <CustomText
-            style={styles.Text}
-          >
-            Collect {task} numbers!
-          </CustomText>
+        <View style={styles.ScoreView}>
+          <CustomText style={styles.Text}>Score: {score}</CustomText>
+          <CustomText style={styles.Text}>Collect {task} numbers!</CustomText>
         </View>
       </View>
     </Background>
@@ -201,7 +192,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   BackgroundImage: { height: "100%", position: "absolute", width: "100%" },
-  BackgroundView: { flex: 1, marginTop: "20%" }, 
+  BackgroundView: { flex: 1, marginTop: "20%" },
   RocketContainer: {
     position: "absolute",
   },
@@ -210,7 +201,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     position: "absolute",
     top: 100,
-  }, 
+  },
   Text: {
     color: white,
     fontFamily: "Poppins-Bold",

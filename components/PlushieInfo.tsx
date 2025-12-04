@@ -5,11 +5,7 @@ import CustomText from "./CustomText";
 const PlushieInfo = ({ string }: { string: string }) => {
   return (
     <View style={styles.container}>
-      <CustomText
-        style={styles.text}
-      >
-        {string}
-      </CustomText>
+      <CustomText style={styles.text}>{string}</CustomText>
     </View>
   );
 };
@@ -26,11 +22,10 @@ const styles = StyleSheet.create({
   //   paddingHorizontal: 12, // ← adds space from left/right edges
   //   justifyContent: "center",
   // },
-  container: { 
-    backgroundColor: 
-    whiteGrey, 
-    margin: 10, 
-    opacity: 100 
+  container: {
+    backgroundColor: whiteGrey,
+    margin: 10,
+    opacity: 100,
   },
   text: {
     color: white,

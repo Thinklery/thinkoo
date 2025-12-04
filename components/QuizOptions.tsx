@@ -12,11 +12,7 @@ const PopUpOptions = ({
   return (
     <View style={styles.container}>
       <Pressable onPress={onPress} style={styles.button}>
-        <CustomText
-          style={styles.text}
-        >
-          {option}
-        </CustomText>
+        <CustomText style={styles.text}>{option}</CustomText>
       </Pressable>
     </View>
   );
@@ -34,12 +30,12 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     width: 250,
   },
-  container: { 
-    backgroundColor: whiteGray, 
-    margin: 10, 
-    opacity: 100 
+  container: {
+    backgroundColor: whiteGray,
+    margin: 10,
+    opacity: 100,
   },
-    
+
   text: {
     color: white,
     fontFamily: "Poppins-Bold",

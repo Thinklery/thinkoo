@@ -21,14 +21,13 @@ const CosmicClashPlayers = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
-    gap:20
+    gap: 20,
   },
   spacing: {
     height: 40,
-  }
+  },
 });
 
 export default CosmicClashPlayers;
