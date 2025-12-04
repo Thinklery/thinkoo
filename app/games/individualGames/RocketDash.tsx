@@ -19,12 +19,12 @@ type AsteroidType = {
   number: number;
 };
 
-let asteroidIdCounter = 0;
+// let asteroidIdCounter = 0;
 
 const RocketDash = () => {
   const [asteroids, setAsteroids] = useState<AsteroidType[]>([]);
   const [score, setScore] = useState(0);
-  const [task, setTask] = useState<"even" | "odd">("even");
+  const [task] = useState<"even" | "odd">("even");
   const [layoutHeight, setLayoutHeight] = useState(0);
 
   const rocketSize = 80; // bigger rocket
@@ -113,18 +113,14 @@ const RocketDash = () => {
   return (
     <Background>
       <View
-        style={{ flex: 1, marginTop: "20%" }}
+        style={styles.BackgroundView}
         onLayout={(e) => setLayoutHeight(e.nativeEvent.layout.height)}
         {...panResponder.panHandlers}
       >
         {/* Custom background */}
         <Image
           source={require("@/assets/images/commonBackground.png")}
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-          }}
+          style={styles.BackgroundImage}
           resizeMode="cover"
         />
 
@@ -134,66 +130,44 @@ const RocketDash = () => {
         {asteroids.map((a) => (
           <View
             key={`asteroid-${a.id}`}
-            style={{
-              position: "absolute",
-              left: a.x,
-              top: a.y,
-              width: asteroidSize,
-              height: asteroidSize,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            style={[
+              styles.Asteroid,
+              {
+                left: a.x,
+                top: a.y,
+                width: asteroidSize,
+                height: asteroidSize,
+              },
+            ]}
           >
             <Image
               source={require("@/assets/images/asteroid.png")}
               style={{ width: asteroidSize, height: asteroidSize }}
               resizeMode="contain"
             />
-            <CustomText
-              style={{
-                position: "absolute",
-                color: "black",
-                fontSize: 20,
-                fontFamily: "Poppins-Bold",
-              }}
-            >
-              {a.number}
-            </CustomText>
+            <CustomText style={styles.AsteriodText}>{a.number}</CustomText>
           </View>
         ))}
 
         {/* Spaceship */}
         <Image
           source={require("@/assets/images/rocket.png")}
-          style={{
-            position: "absolute",
-            left: spaceshipX.current,
-            top: layoutHeight - rocketSize,
-            width: rocketSize,
-            height: rocketSize,
-          }}
+          style={[
+            styles.RocketContainer,
+            {
+              left: spaceshipX.current,
+              top: layoutHeight - rocketSize,
+              width: rocketSize,
+              height: rocketSize,
+            },
+          ]}
           resizeMode="contain"
         />
 
         {/* Score and Task */}
-        <View
-          style={{
-            position: "absolute",
-            top: 100,
-            alignSelf: "center",
-            alignItems: "center",
-          }}
-        >
-          <CustomText
-            style={{ color: "white", fontSize: 24, fontFamily: "Poppins-Bold" }}
-          >
-            Score: {score}
-          </CustomText>
-          <CustomText
-            style={{ color: "white", fontSize: 24, fontFamily: "Poppins-Bold" }}
-          >
-            Collect {task} numbers!
-          </CustomText>
+        <View style={styles.ScoreView}>
+          <CustomText style={styles.Text}>Score: {score}</CustomText>
+          <CustomText style={styles.Text}>Collect {task} numbers!</CustomText>
         </View>
       </View>
     </Background>
@@ -202,4 +176,35 @@ const RocketDash = () => {
 
 export default RocketDash;
 
-const styles = StyleSheet.create({});
+const white = "#FFFFFF";
+const black = "#000000";
+
+const styles = StyleSheet.create({
+  AsteriodText: {
+    color: black,
+    fontFamily: "Poppins-Bold",
+    fontSize: 20,
+    position: "absolute",
+  },
+  Asteroid: {
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+  },
+  BackgroundImage: { height: "100%", position: "absolute", width: "100%" },
+  BackgroundView: { flex: 1, marginTop: "20%" },
+  RocketContainer: {
+    position: "absolute",
+  },
+  ScoreView: {
+    alignItems: "center",
+    alignSelf: "center",
+    position: "absolute",
+    top: 100,
+  },
+  Text: {
+    color: white,
+    fontFamily: "Poppins-Bold",
+    fontSize: 24,
+  },
+});

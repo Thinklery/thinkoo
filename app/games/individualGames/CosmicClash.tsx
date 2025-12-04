@@ -16,16 +16,16 @@ const MoonImage = require("@/assets/images/moon.png");
 const MarsImage = require("@/assets/images/mars.png");
 
 const CosmicClash = () => {
-  const plushie: plushiePowerUpType = {
-    name: "Hello",
-    level: 2,
-    power: "erase",
-  };
+  // const plushie: plushiePowerUpType = {
+  //   name: "Hello",
+  //   level: 2,
+  //   power: "erase",
+  // };
 
   const [board, setBoard] = useState(Array(9).fill(null));
   const [turn, setTurn] = useState("Mars");
   const [winner, setWinner] = useState<string | null>(null);
-  const [powerUsed, setPowerUsed] = useState(false);
+  const [, setPowerUsed] = useState(false);
   const [turnNumber, setTurnNumber] = useState(0);
 
   const resetBoard = () => {
@@ -65,33 +65,33 @@ const CosmicClash = () => {
     setTurnNumber((prev) => prev + 1);
   };
 
-  const activatePower = (action: string) => {
-    if (powerUsed || winner) return;
+  // const activatePower = (action: string) => {
+  //   if (powerUsed || winner) return;
 
-    if (action === "erase") {
-      const last = board.lastIndexOf(turn === "Mars" ? "Moon" : "Mars");
-      if (last !== -1) {
-        const newBoard = [...board];
-        newBoard[last] = null;
-        setBoard(newBoard);
-      }
-    }
+  //   if (action === "erase") {
+  //     const last = board.lastIndexOf(turn === "Mars" ? "Moon" : "Mars");
+  //     if (last !== -1) {
+  //       const newBoard = [...board];
+  //       newBoard[last] = null;
+  //       setBoard(newBoard);
+  //     }
+  //   }
 
-    if (action === "swap") {
-      const tiles = board.map((v, i) => (v ? i : i)).filter(Boolean);
-      if (tiles.length >= 2) {
-        const newBoard = [...board];
-        const a = tiles[0];
-        const b = tiles[1];
-        const temp = newBoard[a];
-        newBoard[a] = newBoard[b];
-        newBoard[b] = temp;
-        setBoard(newBoard);
-      }
-    }
+  //   if (action === "swap") {
+  //     const tiles = board.map((v, i) => (v ? i : i)).filter(Boolean);
+  //     if (tiles.length >= 2) {
+  //       const newBoard = [...board];
+  //       const a = tiles[0];
+  //       const b = tiles[1];
+  //       const temp = newBoard[a];
+  //       newBoard[a] = newBoard[b];
+  //       newBoard[b] = temp;
+  //       setBoard(newBoard);
+  //     }
+  //   }
 
-    setPowerUsed(true);
-  };
+  //   setPowerUsed(true);
+  // };
 
   // Positions for each cell on the 3x3 grid
   const cellPositions = [
@@ -156,7 +156,7 @@ const CosmicClash = () => {
             Use Plushie Power: {plushie.power}
           </Text>
         </Pressable>
-      )} */}{" "}
+      )} */}
       </View>
     </Background>
   );
@@ -164,39 +164,41 @@ const CosmicClash = () => {
 
 export default CosmicClash;
 
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "center" },
-  turnText: { fontSize: 28, marginBottom: 10, color: "white" },
-  gridWrapper: { width: 300, height: 300 },
-  grid: { flex: 1 },
   cell: {
-    position: "absolute",
-    width: "33.33%",
+    alignItems: "center",
     height: "33.33%",
     justifyContent: "center",
-    alignItems: "center",
+    position: "absolute",
+    width: "33.33%",
   },
-  piece: { width: 60, height: 60, resizeMode: "contain" },
-  powerButton: {
-    marginTop: 20,
-    padding: 12,
-    backgroundColor: "#ffafcc",
-    borderRadius: 10,
-  },
-  powerText: { fontSize: 20 },
-  turnWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  turnLabel: {
-    fontSize: 28,
-    color: "white",
-  },
+  container: { alignItems: "center", flex: 1, justifyContent: "center" },
+  grid: { flex: 1 },
+  gridWrapper: { height: 300, width: 300 },
+  piece: { height: 60, resizeMode: "contain", width: 60 },
+  // powerButton: {
+  //   backgroundColor: "#ffafcc",
+  //   borderRadius: 10,
+  //   marginTop: 20,
+  //   padding: 12,
+  // },
+  // powerText: { fontSize: 20 },
   turnImage: {
-    width: 40,
     height: 40,
     marginLeft: 8,
     resizeMode: "contain",
+    width: 40,
+  },
+  turnLabel: {
+    color: white,
+    fontSize: 28,
+  },
+  // turnText: { color: white, fontSize: 28, marginBottom: 10 },
+  turnWrapper: {
+    alignItems: "center",
+    flexDirection: "row",
+    marginBottom: 10,
   },
 });

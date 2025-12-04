@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet } from "react-native";
 import React from "react";
-import { useGlobalSearchParams, useLocalSearchParams } from "expo-router";
+import { useGlobalSearchParams } from "expo-router";
 import Background from "@/components/Background";
 import QuizComponent from "@/components/QuizComponent";
 import useQuizStore from "@/utils/useQuizStore";
@@ -58,25 +58,18 @@ const Quiz = () => {
 export default Quiz;
 
 const styles = StyleSheet.create({
+  bannerImage: {
+    aspectRatio: 2.5,
+    height: undefined,
+    width: "80%", // Adjust based on your image ratio
+  },
+  characterImage: {
+    height: 200,
+    marginBottom: 0,
+    width: 200,
+  },
   container: {
     alignItems: "center", // Center horizontally
     paddingTop: "20%",
-  },
-  bannerImage: {
-    width: "80%",
-    height: undefined,
-    aspectRatio: 2.5, // Adjust based on your image ratio
-  },
-  characterImage: {
-    width: 200,
-    height: 200,
-    marginBottom: 0,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    width: "100%",
-    paddingBottom: 40,
-    gap: 100,
   },
 });

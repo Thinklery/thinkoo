@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import React from "react";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 
@@ -27,12 +27,12 @@ export default ProgressBar;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "center",
     gap: 4,
+    justifyContent: "center",
   },
   pill: {
-    width: 32,
     height: 12,
     resizeMode: "contain",
+    width: 32,
   },
 });

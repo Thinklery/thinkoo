@@ -33,6 +33,14 @@ module.exports = defineConfig([
 
   {
     plugins: { "react-native": reactNative },
-    rules: reactNative.configs.all.rules,
+    rules: {
+      ...reactNative.configs.all.rules,
+      "react-native/no-raw-text": [
+        "error",
+        {
+          skip: ["CustomText"],
+        },
+      ],
+    },
   },
 ]);

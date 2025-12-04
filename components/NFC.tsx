@@ -2,18 +2,18 @@ import { postPlushieInfo } from "@/utils/plushie";
 import useNfcStore from "@/utils/useNfcStore";
 import usePlushieStore from "@/utils/usePlushieStore";
 import React, { useEffect, useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import NfcManager, { NfcTech, TagEvent } from "react-native-nfc-manager";
 
 NfcManager.start();
 
 const NFC = ({ index }: { index: number }) => {
-  const plushies = usePlushieStore((state) => state.plushies);
+  // const plushies = usePlushieStore((state) => state.plushies);
   const setPlushies = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
   const [tagData, setTagData] = React.useState<TagEvent | null>(null);
 
-  const [loading, setLoading] = useState<boolean>();
+  const [, setLoading] = useState<boolean>();
 
   useEffect(() => {
     NfcManager.start();
@@ -36,16 +36,18 @@ const NFC = ({ index }: { index: number }) => {
     }
   }
 
-  const fetchPlushie = async () => {
-    setLoading(true);
-    const data = await postPlushieInfo(String(tagData?.id), "Thinklery");
-    setPlushies(data, index);
-    setLoading(false);
-  };
-
   useEffect(() => {
-    fetchPlushie();
-  }, [tagData?.id]);
+    const fetchPlushie = async () => {
+      setLoading(true);
+      const data = await postPlushieInfo(String(tagData?.id), "Thinklery");
+      setPlushies(data, index);
+      setLoading(false);
+    };
+
+    if (tagData?.id) {
+      fetchPlushie();
+    }
+  }, [tagData?.id, index, setPlushies]);
 
   return (
     <TouchableOpacity style={styles.container} onPress={readTag}>
@@ -61,12 +63,12 @@ export default NFC;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
   },
   image: {
-    width: 180,
     height: 180,
     resizeMode: "contain",
+    width: 180,
   },
 });
