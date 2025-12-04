@@ -26,9 +26,9 @@ export default HomeFunctionButton;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
     alignItems: "center",
     height: "10%",
+    justifyContent: "center",
   },
   image: {
     width: "80%",

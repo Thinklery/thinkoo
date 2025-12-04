@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Pressable, StyleSheet } from "react-native";
 import React from "react";
 import CustomText from "./CustomText";
 
@@ -13,7 +13,7 @@ const PopUpOptions = ({
     <View style={styles.container}>
       <Pressable onPress={onPress} style={styles.button}>
         <CustomText
-          style={{ color: "white", fontFamily: "Poppins-Bold", fontSize: 14 }}
+          style={styles.text}
         >
           {option}
         </CustomText>
@@ -24,12 +24,25 @@ const PopUpOptions = ({
 
 export default PopUpOptions;
 
+const whiteGray = "#C4C4C4";
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
-  container: { backgroundColor: "#C4C4C4", opacity: 100, margin: 10 },
   button: {
-    width: 250,
-    paddingVertical: 5,
-    paddingHorizontal: 12, // ← adds space from left/right edges
     justifyContent: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    width: 250,
+  },
+  container: { 
+    backgroundColor: whiteGray, 
+    margin: 10, 
+    opacity: 100 
+  },
+    
+  text: {
+    color: white,
+    fontFamily: "Poppins-Bold",
+    fontSize: 14,
   },
 });

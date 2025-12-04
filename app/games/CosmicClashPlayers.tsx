@@ -7,12 +7,12 @@ import PlayerBox from "@/components/PlayerBox";
 
 const CosmicClashPlayers = () => {
   return (
-    <Background containerStyle={{ gap: 20 }}>
+    <Background containerStyle={styles.container}>
       <NavigationBack />
       <View>
         <PlayerBox player="player1" />
 
-        <View style={{ height: 40 }} />
+        <View style={styles.spacing} />
 
         <PlayerBox player="player2" />
       </View>
@@ -20,5 +20,15 @@ const CosmicClashPlayers = () => {
     </Background>
   );
 };
+
+
+const styles = StyleSheet.create({
+  container: {
+    gap:20
+  },
+  spacing: {
+    height: 40,
+  }
+});
 
 export default CosmicClashPlayers;

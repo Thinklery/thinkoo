@@ -1,4 +1,4 @@
-import { View, Linking, Image, StyleSheet } from "react-native";
+import { View, Linking, StyleSheet } from "react-native";
 import React, { useEffect } from "react";
 import { postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
@@ -9,7 +9,7 @@ import Astronaut from "@/components/Astronaut";
 import Background from "@/components/Background";
 
 const Home = () => {
-  const plushies = usePlushieStore((state) => state.plushies);
+  // const plushies = usePlushieStore((state) => state.plushies);
   const setPlushie = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
 
@@ -45,8 +45,8 @@ export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignContent: "center",
+    flex: 1,
     justifyContent: "center",
   },
 });

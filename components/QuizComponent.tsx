@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
+import { View, ImageBackground, StyleSheet } from "react-native";
 import PopUpOptions from "./QuizOptions";
 import popUpQuesions from "@/lib/popUpQuestions";
 import useQuizStore from "@/utils/useQuizStore";
@@ -34,34 +34,19 @@ const QuizComponent = ({
         <View style={styles.content}>
           {isCorrect ? (
             <CustomText
-              style={{
-                color: "white",
-                fontFamily: "Poppins-Bold",
-                fontSize: 16,
-                padding: 10,
-              }}
+              style={styles.explanationText}
             >
               {popUpQuesions[0].explaination}
             </CustomText>
           ) : (
             <>
               <CustomText
-                style={{
-                  color: "white",
-                  fontFamily: "Poppins-Bold",
-                  fontSize: 16,
-                  padding: 10,
-                }}
+                style={styles.explanationText}
               >
                 Answer one more to win the game!
               </CustomText>
               <CustomText
-                style={{
-                  color: "white",
-                  fontFamily: "Poppins-Bold",
-                  fontSize: 14,
-                  paddingBottom: 10,
-                }}
+                style={styles.questionText} 
               >
                 {currentQuestion.question}
               </CustomText>
@@ -82,29 +67,36 @@ const QuizComponent = ({
 
 export default QuizComponent;
 
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   background: {
-    borderRadius: 12,
-    justifyContent: "center",
     alignItems: "center",
+    borderRadius: 12,
     height: 500,
-    width: 350,
+    justifyContent: "center",
     padding: 20,
+    width: 350,
   },
   content: {
-    width: "100%",
     alignItems: "center",
+    width: "100%",
+  },
+  explanationText: {
+    color: white,
+    fontFamily: "Poppins-Bold",
+    fontSize: 16,
+    padding: 10,
   },
   questionText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-    color: "#fff", // use a color that contrasts your background
+    color: white,
+    fontFamily: "Poppins-Bold",
+    fontSize: 14,
+    paddingBottom: 10,
+  },
+  wrapper: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
 });

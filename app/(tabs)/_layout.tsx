@@ -5,8 +5,7 @@ import {
   ImageSourcePropType,
   View,
   Image,
-  StyleSheet,
-  Text,
+  StyleSheet
 } from "react-native";
 
 const TabIcon = ({
@@ -80,22 +79,24 @@ const _layout = () => {
 
 export default _layout;
 
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
+    TabBarText: {
+    color: white,
+    fontFamily: "Poppins-Regular",
+    fontSize: 12,
+    textAlign: "center",
+    width: 72,
+  },
   TabIconContainer: {
-    flexDirection: "column",
     alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center",
   },
   TabIconImage: {
-    width: 72,
     height: 72,
     resizeMode: "contain",
-  },
-  TabBarText: {
-    fontFamily: "Poppins-Regular",
-    color: "white",
-    fontSize: 12,
     width: 72,
-    textAlign: "center",
   },
 });

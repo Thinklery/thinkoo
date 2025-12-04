@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Image } from "react-native";
+import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 import { router } from "expo-router";
@@ -20,7 +20,7 @@ const ForwardButton = () => {
         <Image
           source={require("../../assets/images/forwardButton.png")}
           resizeMode="contain"
-          style={{ height: 100, width: 100 }}
+          style={styles.button}
         ></Image>
       </TouchableOpacity>
     </View>
@@ -28,3 +28,10 @@ const ForwardButton = () => {
 };
 
 export default ForwardButton;
+
+const styles = StyleSheet.create({
+  button: {
+    height: 100,
+    width: 100,
+  },
+});

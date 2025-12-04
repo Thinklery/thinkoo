@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React from "react";
 import CustomText from "../CustomText";
 
@@ -12,20 +12,12 @@ const Paragraph = ({
   return (
     <View style={styles.CustomTextContainer}>
       <CustomText
-        style={{
-          fontFamily: "Poppins-Bold",
-          color: "white",
-          fontSize: 40,
-        }}
+        style={styles.MainHeaderText}
       >
         {mainHeader}
       </CustomText>
       <CustomText
-        style={{
-          fontFamily: "Poppins-Regular",
-          color: "white",
-          fontSize: 20,
-        }}
+        style={styles.SubHeaderText}
       >
         {subHeader}
       </CustomText>
@@ -35,11 +27,23 @@ const Paragraph = ({
 
 export default Paragraph;
 
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
   CustomTextContainer: {
-    gap: 20,
     alignItems: "flex-start",
+    gap: 20,
     paddingLeft: 30,
     paddingRight: 30,
   },
+  MainHeaderText: {
+    color: white,
+    fontFamily: "Poppins-Bold",
+    fontSize: 40,
+  },
+  SubHeaderText: {
+    color: white,
+    fontFamily: "Poppins-Regular",
+    fontSize: 20,
+  }
 });
