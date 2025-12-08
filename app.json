@@ -24,7 +24,9 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "permissions": ["android.permission.NFC"],
+      "permissions": [
+        "android.permission.NFC"
+      ],
       "package": "com.anonymous.thinkoo"
     },
     "web": {
@@ -46,7 +48,8 @@
         }
       ],
       "react-native-nfc-manager",
-      "expo-font"
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

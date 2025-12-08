@@ -11,7 +11,7 @@ const ForwardButton = () => {
     if (currentPage < 5) {
       setPage(currentPage + 1);
     } else {
-      router.push("../(tabs)/home");
+      router.push("../user");
     }
   };
   return (
