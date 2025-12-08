@@ -1,4 +1,4 @@
-import GameMenuScreen from "@/src/modules/game/screens/GameMenuScreen";
+import GameMenuScreen from "@/src/modules/games/screens/GameMenuScreen";
 
 export default function index() {
   return (
