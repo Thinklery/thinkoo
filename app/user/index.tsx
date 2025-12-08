@@ -11,6 +11,7 @@ export default function UserScreen() {
         setSubmitted(true);
         const storeUsername = async () => {
             try {
+                if (!username.trim()) return;
                 await AsyncStorage.setItem("username", username.trim());
                 router.push("/(tabs)/home");
             } catch (error) {
