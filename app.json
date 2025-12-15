@@ -46,7 +46,8 @@
         }
       ],
       "react-native-nfc-manager",
-      "expo-font"
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
