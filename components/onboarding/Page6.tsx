@@ -27,7 +27,7 @@ const Page6 = () => {
 
       <View style={styles.progress}>
         <ProgressBar />
-        <SubmitButton name={name} />
+        <SubmitButton name={name.trim()} />
       </View>
     </View>
   );

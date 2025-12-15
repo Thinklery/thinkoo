@@ -3,6 +3,7 @@ import React from "react";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { upsertUser } from "@/lib/identity";
 
 type Props = {
   name: string;
@@ -11,9 +12,10 @@ type Props = {
 const SubmitButton = ({name}: Props) => {
   const setName = useOnboardingStore((state) => state.setName);
 
-  const handlePress = () => {
+  const handlePress = async () => {
       setName(name);
-      AsyncStorage.setItem("user_name", name);
+      AsyncStorage.setItem("displayName", name);
+      await upsertUser(name);
       router.replace("/(tabs)/home");
   };
   return (

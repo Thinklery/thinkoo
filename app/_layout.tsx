@@ -9,10 +9,8 @@ const RootLayout = () => {
   //   "Poppins-Bold": require("../assets/fonts/Poppins/Poppins-Bold.ttf"),
   // });
   useEffect(() => {
-    // Any side effects if needed
     const init = async () => {
-      // Initialization code here
-      const name = await AsyncStorage.getItem("user_name");
+      const name = await AsyncStorage.getItem("displayName");
       if (name) {
         useOnboardingStore.getState().setName(name);
         router.replace("/(tabs)/home");
