@@ -50,10 +50,7 @@ export default function TabsLayout() {
       </Tabs>
 
       {/* Tiny collapsible menu on the right */}
-      <ListMenu
-        visible={isListMenuOpen}
-        onClose={closeListMenu}
-      />
+      <ListMenu visible={isListMenuOpen} onClose={closeListMenu} />
     </>
   );
 }
