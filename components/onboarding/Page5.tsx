@@ -33,29 +33,29 @@ const Page5 = () => {
 export default Page5;
 
 const styles = StyleSheet.create({
-  background: {
-    bottom: 0,
-    height: "100%",
-    left: 0,
-    position: "absolute",
-    right: 0,
-    top: 0,
-    width: "100%",
-  },
   container: {
     flex: 1,
   },
+  background: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: "100%",
+    height: "100%",
+  },
   content: {
     alignSelf: "center",
-    height: "30%",
-    marginTop: "20%",
     width: "90%",
+		height: "30%",
+		marginTop: "20%"
   },
   progress: {
-    alignItems: "center",
     flexDirection: "row",
-    gap: 50,
+    alignItems: "center",
     justifyContent: "center",
+    gap: 50,
     marginTop: 20,
   },
 });

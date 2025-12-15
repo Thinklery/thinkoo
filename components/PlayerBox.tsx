@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   playerLabel: {
+    width: 200,
     height: 70,
     resizeMode: "contain",
-    width: 200,
   },
 });

@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet } from "react-native";
+import { View, Text, ImageBackground, StyleSheet } from "react-native";
 import React from "react";
 import FirstPageButton from "./Onboardng1Button";
 
@@ -18,8 +18,8 @@ export default Page1;
 
 const styles = StyleSheet.create({
   background: {
-    alignItems: "center",
     flex: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
 });

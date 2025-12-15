@@ -38,19 +38,19 @@ const BackButton = ({
 export default BackButton;
 
 const styles = StyleSheet.create({
-  button: {
-    alignItems: "center",
-    height: 70,
-    justifyContent: "center",
-    width: 70, // Adjust size to fit your PNG
-  },
   container: {
     alignItems: "flex-start", // top-left alignment
     marginLeft: 20,
     marginTop: 20,
   },
+  button: {
+    width: 70, // Adjust size to fit your PNG
+    height: 70,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   image: {
-    height: "100%",
     width: "100%",
+    height: "100%",
   },
 });
