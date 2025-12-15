@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
   default: {
     fontFamily: "Poppins-Regular",
   },
-  bold: {
-    fontFamily: "Poppins-Bold",
-  },
 });
 
 export default CustomText;

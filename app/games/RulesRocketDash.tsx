@@ -30,8 +30,8 @@ export default RulesRocketDash;
 
 const styles = StyleSheet.create({
   contents: {
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
   },
   image: {
     width: "70%",

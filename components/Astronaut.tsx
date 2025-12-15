@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { router } from "expo-router";
 import useOnboardingStore from "@/utils/useOnboardingStore";
@@ -24,16 +24,12 @@ const Astronaut = () => {
 
 export default Astronaut;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  astroImage: {
+    height: 300,
+    resizeMode: "contain",
+    width: 300,
   },
   centerImageWrapper: {
     alignItems: "center",
   },
-  astroImage: {
-    width: 300,
-    height: 300,
-    resizeMode: "contain",
-  },
 });
-

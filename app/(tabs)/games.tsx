@@ -19,8 +19,8 @@ export default Learning;
 
 const styles = StyleSheet.create({
   contents: {
-    flex: 1,
     alignContent: "center",
+    flex: 1,
     justifyContent: "center",
   },
 });

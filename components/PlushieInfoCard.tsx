@@ -1,7 +1,6 @@
 import { View, Image, StyleSheet, ImageBackground } from "react-native";
 import React from "react";
 import CustomText from "./CustomText";
-import NavigationBack from "./NavigationBack";
 
 const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
   const imageSource = plushie.type?.type
@@ -33,30 +32,32 @@ const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
 
 export default PlushieInfoCard;
 
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     padding: 10,
   },
-  plushieImage: {
-    width: 200,
-    height: 200,
-    marginBottom: 10,
+  content: {
+    alignItems: "center",
+    justifyContent: "center",
   },
   frameImage: {
-    width: 250,
+    alignItems: "center",
     height: 180,
     justifyContent: "center",
-    alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 15,
+    width: 250,
   },
-  content: {
-    justifyContent: "center",
-    alignItems: "center",
+  plushieImage: {
+    height: 200,
+    marginBottom: 10,
+    width: 200,
   },
   text: {
-    color: "white",
+    color: white,
     fontFamily: "Poppins-Bold",
     fontSize: 16,
     paddingVertical: 4,

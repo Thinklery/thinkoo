@@ -7,8 +7,13 @@ const imageMap: Record<string, any> = {
   home: require("@/assets/images/home_inactive.png"),
 };
 
-
-const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) => {
+const HomeButton = ({
+  onPress,
+  type,
+}: {
+  onPress: () => void;
+  type: string;
+}) => {
   const router = useRouter();
 
   return (
@@ -21,7 +26,7 @@ const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) =>
         }}
       >
         <Image
-          source={imageMap[type]}// Your custom PNG
+          source={imageMap[type]} // Your custom PNG
           style={styles.image}
           resizeMode="contain"
         />
@@ -33,19 +38,19 @@ const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) =>
 export default HomeButton;
 
 const styles = StyleSheet.create({
+  button: {
+    alignItems: "center",
+    height: 60,
+    justifyContent: "center",
+    width: 60, // Adjust size to fit your PNG
+  },
   container: {
     alignItems: "flex-start", // top-left alignment
     marginLeft: 20,
     marginTop: 20,
   },
-  button: {
-    width: 60, // Adjust size to fit your PNG
-    height: 60,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   image: {
-    width: "100%",
     height: "100%",
+    width: "100%",
   },
 });

@@ -10,7 +10,7 @@ export const getPlushieInfo = async (nfcId: string) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
     return plushieInfo;
   } catch (e) {
@@ -36,7 +36,7 @@ export const postPlushieInfo = async (nfcId: string, name: string) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ nfcId, name }),
-      }
+      },
     );
     return plushieInfoAfterPost.data;
   } catch (e) {

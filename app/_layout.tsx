@@ -1,12 +1,11 @@
-import { SplashScreen, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import React from "react";
-import { useFonts } from "expo-font";
 
 const RootLayout = () => {
-  const [fontsLoaded] = useFonts({
-    "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
-    "Poppins-Bold": require("../assets/fonts/Poppins/Poppins-Bold.ttf"),
-  });
+  // const [fontsLoaded] = useFonts({
+  //   "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
+  //   "Poppins-Bold": require("../assets/fonts/Poppins/Poppins-Bold.ttf"),
+  // });
 
   return (
     <Stack>

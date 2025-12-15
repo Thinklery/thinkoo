@@ -1,10 +1,4 @@
-import {
-  View,
-  Button,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import { router } from "expo-router";
 
@@ -45,9 +39,9 @@ export default GameStart;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
     alignItems: "center",
     height: "10%",
+    justifyContent: "center",
   },
   image: {
     width: "80%",
