@@ -1,11 +1,27 @@
-import { Stack } from "expo-router";
-import React from "react";
+import { router, Stack } from "expo-router";
+import React, { useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const RootLayout = () => {
   // const [fontsLoaded] = useFonts({
   //   "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
   //   "Poppins-Bold": require("../assets/fonts/Poppins/Poppins-Bold.ttf"),
   // });
+  useEffect(() => {
+    // Any side effects if needed
+    const init = async () => {
+      // Initialization code here
+      const name = await AsyncStorage.getItem("user_name");
+      if (name) {
+        useOnboardingStore.getState().setName(name);
+        router.replace("/(tabs)/home");
+      } else {
+        router.replace("/(onboarding)/onboarding");
+      }
+    }
+    init();
+  }, []);
 
   return (
     <Stack>

@@ -8,7 +8,7 @@ const Onboardng1Button = () => {
   const setPage = useOnboardingStore((state) => state.setPage);
 
   const handlePress = () => {
-    if (currentPage < 4) {
+    if (currentPage < 6) {
       setPage(currentPage + 1);
     } else {
       router.push("../(tabs)/home");
