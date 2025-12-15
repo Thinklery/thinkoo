@@ -4,7 +4,7 @@ import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const ProgressBar = () => {
   const currentPage = useOnboardingStore((state) => state.currentPage);
-  const totalPages = 5;
+  const totalPages = 6;
   return (
     <View style={styles.container}>
       {Array.from({ length: totalPages }).map((_, index) => (

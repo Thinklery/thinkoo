@@ -51,4 +51,6 @@ declare interface NfcStoreType {
 declare interface OnboardingStoreType {
   currentPage: number;
   setPage: (page: number) => void;
+  name: string;
+  setName: (name: string) => void;
 }

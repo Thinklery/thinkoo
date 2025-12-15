@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabaseClient";
+import { supabase } from "@/utils/supabase";
 
 export async function GET(req: Request) {
   const url = new URL(req.url);

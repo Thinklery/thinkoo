@@ -1,18 +1,13 @@
 import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 import useOnboardingStore from "@/utils/useOnboardingStore";
-import { router } from "expo-router";
 
 const ForwardButton = () => {
   const currentPage = useOnboardingStore((state) => state.currentPage);
   const setPage = useOnboardingStore((state) => state.setPage);
 
   const handlePress = () => {
-    if (currentPage < 5) {
-      setPage(currentPage + 1);
-    } else {
-      router.push("../(tabs)/home");
-    }
+    setPage(currentPage + 1);
   };
   return (
     <View>

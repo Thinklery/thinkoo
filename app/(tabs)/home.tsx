@@ -1,4 +1,4 @@
-import { View, Linking, StyleSheet } from "react-native";
+import { Text, View, Linking, StyleSheet } from "react-native";
 import React, { useEffect } from "react";
 import { postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
@@ -7,11 +7,13 @@ import HomeFunctionButton from "@/components/HomeFunctionButton";
 
 import Astronaut from "@/components/Astronaut";
 import Background from "@/components/Background";
+import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const Home = () => {
   // const plushies = usePlushieStore((state) => state.plushies);
   const setPlushie = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
+  const name = useOnboardingStore((state) => state.name);
 
   useEffect(() => {
     const handleDeepLink = async (url: string) => {
@@ -31,6 +33,7 @@ const Home = () => {
 
   return (
     <Background>
+      <Text> Hi {name}!!</Text>
       <View style={styles.container}>
         <Astronaut />
 

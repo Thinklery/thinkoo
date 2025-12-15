@@ -9,7 +9,7 @@ const Astronaut = () => {
     <View style={styles.centerImageWrapper}>
       <TouchableOpacity
         onPress={() => {
-          router.push("/(onboarding)/onboarding");
+          router.push("/(tabs)/home");
           setPage(1);
         }}
       >
