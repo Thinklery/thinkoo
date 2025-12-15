@@ -1,60 +1,115 @@
-import { Text, View, Linking, StyleSheet } from "react-native";
-import React, { useEffect } from "react";
-import { postPlushieInfo } from "@/utils/plushie";
-import usePlushieStore from "@/utils/usePlushieStore";
-import useNfcStore from "@/utils/useNfcStore";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  Alert,
+  StyleSheet,
+} from "react-native";
+import { router } from "expo-router";
+import { getFriends } from "@/utils/friendsApi";
 
-import Astronaut from "@/components/Astronaut";
-import Background from "@/components/Background";
-import useOnboardingStore from "@/utils/useOnboardingStore";
-
-const Home = () => {
-  // const plushies = usePlushieStore((state) => state.plushies);
-  const setPlushie = usePlushieStore((state) => state.setPlushie);
-  const setNfcId = useNfcStore((state) => state.setNfcId);
-  const name = useOnboardingStore((state) => state.name);
-
-  useEffect(() => {
-    const handleDeepLink = async (url: string) => {
-      const parsed = new URL(url);
-      const nfcId = parsed.searchParams.get("nfcId");
-      if (nfcId) {
-        setNfcId(nfcId, 0);
-        const data = await postPlushieInfo(nfcId, "Thinklery");
-        setPlushie(data, 0);
-      }
-    };
-
-    Linking.getInitialURL().then((url) => {
-      if (url) handleDeepLink(url);
-    });
-  }, []);
-
-  return (
-    <Background>
-      <Text style={styles.text}> Hi {name}!!</Text>
-      <View style={styles.container}>
-        <Astronaut />
-      </View>
-    </Background>
-  );
+type FriendRow = {
+  id: string;
+  display_name: string;
 };
 
-export default Home;
+export default function FriendsScreen() {
+  const [loading, setLoading] = useState(true);
+  const [friends, setFriends] = useState<FriendRow[]>([]);
 
-const white = "#FFFFFF";
+  const load = useCallback(async () => {
+    try {
+      setLoading(true);
+      const rows = await getFriends();
+      setFriends(rows);
+    } catch (e: any) {
+      Alert.alert("Could not load friends", e?.message ?? String(e));
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Friends</Text>
+
+      <View style={styles.row}>
+        <TouchableOpacity
+          style={styles.primaryBtn}
+          onPress={() => router.push("/addFriend")}
+        >
+          <Text style={styles.primaryBtnText}>Add friend</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.secondaryBtn} onPress={load}>
+          <Text style={styles.secondaryBtnText}>Refresh</Text>
+        </TouchableOpacity>
+      </View>
+
+      {loading ? (
+        <View style={styles.center}>
+          <ActivityIndicator />
+          <Text style={styles.muted}>Loading…</Text>
+        </View>
+      ) : friends.length === 0 ? (
+        <View style={styles.center}>
+          <Text style={styles.muted}>
+            No friends yet. Add one with a friend code.
+          </Text>
+        </View>
+      ) : (
+        <FlatList
+          data={friends}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingTop: 12, paddingBottom: 32 }}
+          renderItem={({ item }) => (
+            <View style={styles.card}>
+              <Text style={styles.cardTitle}>{item.display_name}</Text>
+              <Text style={styles.cardSub} numberOfLines={1}>
+                ID: {item.id}
+              </Text>
+            </View>
+          )}
+        />
+      )}
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    alignContent: "center",
-    flex: 1,
-    justifyContent: "center",
+  container: { flex: 1, padding: 16 },
+  title: { fontSize: 28, fontWeight: "700" },
+  row: { flexDirection: "row", gap: 10, marginTop: 12 },
+  primaryBtn: {
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 10,
+    backgroundColor: "#111",
   },
-  text: {
-    color: white,
-    fontSize: 24,
-    fontWeight: "600",
-    marginTop: 40,
-    textAlign: "center",
+  primaryBtnText: { color: "#fff", fontWeight: "600" },
+  secondaryBtn: {
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 10,
+    backgroundColor: "#eee",
   },
+  secondaryBtnText: { color: "#111", fontWeight: "600" },
+  center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 8 },
+  muted: { color: "#666" },
+  card: {
+    borderWidth: 1,
+    borderColor: "#eee",
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 10,
+  },
+  cardTitle: { fontSize: 16, fontWeight: "700" },
+  cardSub: { marginTop: 4, color: "#444" },
 });
