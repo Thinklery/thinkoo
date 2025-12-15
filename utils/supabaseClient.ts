@@ -1,8 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+  throw new Error("Missing Supabase environment variables");
+}
+
 // Replace these with your actual Supabase project URL and anon key
-const SUPABASE_URL = "https://gklwhdofqvuymbuvkpbc.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrbHdoZG9mcXZ1eW1idXZrcGJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzNDE1NjgsImV4cCI6MjA3ODkxNzU2OH0.SteR-042Sm-NG4yCXYITxGMNGL_gVVEkeujP1_F7ETE";
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
