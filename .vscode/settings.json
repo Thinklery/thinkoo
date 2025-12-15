@@ -1,5 +1,9 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "editor.formatOnSave": true,
-    "java.compile.nullAnalysis.mode": "disabled",
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "editor.formatOnSave": true,
+  "java.compile.nullAnalysis.mode": "disabled",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

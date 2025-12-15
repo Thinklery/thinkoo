@@ -39,6 +39,21 @@ const _layout = () => {
       }}
     >
       <Tabs.Screen
+        name="friends"
+        options={{
+          headerShown: false,
+          title: "Friends",
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              activeSource={require("../../assets/images/friends_active.png")}
+              inactiveSource={require("../../assets/images/friends_inactive.png")}
+              focused={focused}
+              label="Friends"
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="home"
         options={{
           headerShown: false,

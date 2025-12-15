@@ -1,23 +1,28 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Crypto from "expo-crypto";
 import { supabase } from "@/utils/supabase";
 
-export const generateIdentity = async (): Promise<string> => {
+export const hasExistingId = async (): Promise<boolean> => {
   const uuid = await AsyncStorage.getItem("UUID");
   if (uuid) {
-    return uuid;
+    return true;
   } else {
-    const randomBytes = Crypto.randomUUID();
-    await AsyncStorage.setItem("UUID", randomBytes);
-    return randomBytes;
+    return false;
   }
 };
 
 export const upsertUser = async (displayName: string) => {
-  const uuid = await generateIdentity();
+  if (!displayName) {
+    console.error("Display name is required to upsert user.");
+    return null;
+  }
+
+  if (await hasExistingId()) {
+    return null;
+  }
+
   const { data, error } = await supabase
     .from("users")
-    .upsert({ id: uuid, display_name: displayName })
+    .upsert({ display_name: displayName })
     .select();
   if (error) {
     console.error("Error upserting user:", error);
