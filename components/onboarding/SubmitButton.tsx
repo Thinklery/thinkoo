@@ -9,14 +9,14 @@ type Props = {
   name: string;
 };
 
-const SubmitButton = ({name}: Props) => {
+const SubmitButton = ({ name }: Props) => {
   const setName = useOnboardingStore((state) => state.setName);
 
   const handlePress = async () => {
-      setName(name);
-      AsyncStorage.setItem("displayName", name);
-      await upsertUser(name);
-      router.replace("/(tabs)/home");
+    setName(name);
+    AsyncStorage.setItem("displayName", name);
+    await upsertUser(name);
+    router.replace("/(tabs)/home");
   };
   return (
     <View>
@@ -45,5 +45,5 @@ const white = "#FFFFFF";
 const styles = StyleSheet.create({
   text: {
     color: white,
-  }
+  },
 });

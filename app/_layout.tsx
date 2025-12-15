@@ -17,7 +17,7 @@ const RootLayout = () => {
       } else {
         router.replace("/(onboarding)/onboarding");
       }
-    }
+    };
     init();
   }, []);
 

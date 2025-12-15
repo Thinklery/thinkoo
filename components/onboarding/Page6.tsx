@@ -5,7 +5,7 @@ import Paragraph from "./Paragraph";
 import SubmitButton from "./SubmitButton";
 
 const Page6 = () => {
-    const [name, setName] = useState("");
+  const [name, setName] = useState("");
 
   return (
     <View style={styles.container}>
@@ -23,7 +23,12 @@ const Page6 = () => {
         mainHeader="We need your help!"
         subHeader="What is your name?"
       />
-      <TextInput placeholder="Enter your name" style={styles.textInput} value={name} onChangeText={setName}></TextInput>
+      <TextInput
+        placeholder="Enter your name"
+        style={styles.textInput}
+        value={name}
+        onChangeText={setName}
+      ></TextInput>
 
       <View style={styles.progress}>
         <ProgressBar />
