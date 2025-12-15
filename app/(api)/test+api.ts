@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabaseClient";
+import { supabase } from "@/utils/supabase";
 
 export async function POST(req: Request) {
   const { plushieId, name } = await req.json();
