@@ -1,9 +1,5 @@
-import { View, Text } from "react-native";
+import FriendsScreen from "@/src/modules/friends/screens/FriendScreen";
 
-export default function FriendsScreen() {
-  return (
-    <View>
-      <Text>Friends screen</Text>
-    </View>
-  );
+export default function FriendsRoute() {
+  return <FriendsScreen />;
 }
