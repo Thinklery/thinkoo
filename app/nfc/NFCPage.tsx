@@ -4,17 +4,17 @@ import NFC from "@/components/NFC";
 import Background from "@/components/Background";
 import PlushieInfoCard from "@/components/PlushieInfoCard";
 import useNfcStore from "@/utils/useNfcStore";
-import NavigationBack from "@/components/NavigationBack";
+import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 import usePlushieStore from "@/utils/usePlushieStore";
 
 const NFCPage = () => {
   const NfcId = useNfcStore((state) => state.NfcId);
-	const plushies = usePlushieStore((state) => state.plushies)
+  const plushies = usePlushieStore((state) => state.plushies);
 
   return (
     <Background>
       <View style={styles.contents}>
-        <NavigationBack />
+        <BackNavigationBar />
         {NfcId[0] ? (
           <PlushieInfoCard plushie={plushies[0]} />
         ) : (

@@ -8,7 +8,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import CustomText from "@/components/CustomText";
 import Background from "@/components/Background";
-import NavigationBack from "@/components/NavigationBack";
+import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 
 const { width } = Dimensions.get("window");
 
@@ -128,7 +128,7 @@ const RocketDash = () => {
           resizeMode="cover"
         />
 
-        <NavigationBack />
+        <BackNavigationBar />
 
         {/* Asteroids with numbers */}
         {asteroids.map((a) => (
@@ -202,6 +202,4 @@ const RocketDash = () => {
 
 export default RocketDash;
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});

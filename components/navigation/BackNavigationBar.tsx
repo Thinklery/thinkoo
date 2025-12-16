@@ -3,26 +3,28 @@ import React from "react";
 import BackButton from "./BackButton";
 import HomeButton from "./HomeButton";
 
-const NavigationBack = ({
+const BackNavigationBar = ({
   back,
   home,
   backType,
   homeType,
+	style
 }: {
   back?: () => void;
   home?: () => void;
   backType?: string;
   homeType?: string;
+	style?: object;
 }) => {
   return (
-    <View style={styles.buttonsRow}>
+    <View style={[styles.buttonsRow, style]}>
       <BackButton type={backType ?? "backBordered"} onPress={() => back?.()} />
-      <HomeButton type={homeType ?? "homeBordered"}  onPress={() => home?.()} />
+      <HomeButton type={homeType ?? "homeBordered"} onPress={() => home?.()} />
     </View>
   );
 };
 
-export default NavigationBack;
+export default BackNavigationBar;
 
 const styles = StyleSheet.create({
   buttonsRow: {

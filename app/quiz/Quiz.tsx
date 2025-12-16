@@ -6,7 +6,8 @@ import QuizComponent from "@/components/QuizComponent";
 import useQuizStore from "@/utils/useQuizStore";
 import popUpQuestions from "@/lib/popUpQuestions";
 import useNfcStore from "@/utils/useNfcStore";
-import NavigationBack from "@/components/NavigationBack";
+import BackNavigationBar from "@/components/navigation/BackNavigationBar";
+import Floater from "@/components/Floater";
 
 const winnerImage: Record<string, any> = {
   Mars: require("@/assets/images/mars.png"),
@@ -23,26 +24,27 @@ const Quiz = () => {
   console.log(winner);
 
   return (
-    <Background>
-      <View style={styles.container}>
-        <Image
-          source={
-            isCorrect
-              ? require("@/assets/images/correct.png")
-              : require("@/assets/images/congratulations.png")
-          }
-          resizeMode="contain"
-          style={styles.bannerImage}
-        />
-        <Image
-          source={winnerImage[winner]}
-          resizeMode="contain"
-          style={styles.characterImage}
-        />
-      </View>
-      <QuizComponent reset={resetQuiz} winner={winner} />
+    <Background
+      containerStyle={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Image
+        source={
+          isCorrect
+            ? require("@/assets/images/correct.png")
+            : require("@/assets/images/congratulations.png")
+        }
+        resizeMode="contain"
+        style={styles.bannerImage}
+      />
+      <Floater src={winnerImage[winner]} />
 
-      <NavigationBack
+      <QuizComponent />
+
+      <BackNavigationBar
         back={resetQuiz}
         backType="reset"
         home={() => {
@@ -50,6 +52,7 @@ const Quiz = () => {
           resetNFC();
         }}
         homeType="home"
+        style={{ marginBottom: 20, marginTop: -20 }}
       />
     </Background>
   );
@@ -59,24 +62,13 @@ export default Quiz;
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center", // Center horizontally
-    paddingTop: "20%",
+    marginTop: "20%",
+    alignItems: "center",
   },
   bannerImage: {
-    width: "80%",
-    height: undefined,
-    aspectRatio: 2.5, // Adjust based on your image ratio
-  },
-  characterImage: {
-    width: 200,
-    height: 200,
-    marginBottom: 0,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    width: "100%",
-    paddingBottom: 40,
-    gap: 100,
+    width: 350,
+    aspectRatio: 2.5,
+    marginBottom: -40,
+    marginTop: "10%",
   },
 });

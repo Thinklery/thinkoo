@@ -1,11 +1,10 @@
-import { View, Linking, Image, StyleSheet } from "react-native";
+import { View, Linking, StyleSheet, Image } from "react-native";
 import React, { useEffect } from "react";
 import { postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
 import useNfcStore from "@/utils/useNfcStore";
-import HomeFunctionButton from "@/components/HomeFunctionButton";
+import Button from "@/components/Button";
 
-import Astronaut from "@/components/Astronaut";
 import Background from "@/components/Background";
 
 const Home = () => {
@@ -32,10 +31,13 @@ const Home = () => {
   return (
     <Background>
       <View style={styles.container}>
-        <Astronaut />
+        <Image
+          source={require("@/assets/images/home_astro.png")}
+          style={{ resizeMode: "contain", width: 300, height: 300}}
+        />
 
-        <HomeFunctionButton type="FindYourToy" />
-        <HomeFunctionButton type="WhatPlanetAreYou" />
+        <Button name="FindYourToy" />
+        <Button name="WhatPlanetAreYou" />
       </View>
     </Background>
   );
@@ -46,7 +48,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: "center",
     justifyContent: "center",
-  },
+		alignItems: "center",},
 });

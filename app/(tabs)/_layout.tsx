@@ -6,7 +6,6 @@ import {
   View,
   Image,
   StyleSheet,
-  Text,
 } from "react-native";
 
 const TabIcon = ({

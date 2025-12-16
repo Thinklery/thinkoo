@@ -5,13 +5,7 @@ import popUpQuesions from "@/lib/popUpQuestions";
 import useQuizStore from "@/utils/useQuizStore";
 import CustomText from "./CustomText";
 
-const QuizComponent = ({
-  reset,
-  winner,
-}: {
-  reset: () => void;
-  winner: string | null;
-}) => {
+const QuizComponent = () => {
   const setOptionsSelected = useQuizStore((state) => state.setOptionSelected);
   const optionsSelected = useQuizStore((state) => state.optionsSelected);
 

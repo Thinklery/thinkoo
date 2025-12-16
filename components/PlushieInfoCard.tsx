@@ -1,7 +1,6 @@
 import { View, Image, StyleSheet, ImageBackground } from "react-native";
 import React from "react";
 import CustomText from "./CustomText";
-import NavigationBack from "./NavigationBack";
 
 const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
   const imageSource = plushie.type?.type

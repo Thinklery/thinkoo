@@ -1,13 +1,13 @@
 import { StyleSheet, Image, View } from "react-native";
 import React from "react";
-import GameStart from "@/components/games/GameStart";
 import Background from "@/components/Background";
-import NavigationBack from "@/components/NavigationBack";
+import BackNavigationBar from "@/components/navigation/BackNavigationBar";
+import Button from "@/components/Button";
 
 const RulesRocketDash = () => {
   return (
     <Background>
-      <NavigationBack />
+      <BackNavigationBar />
 
       <View style={styles.contents}>
         <Image
@@ -21,7 +21,7 @@ const RulesRocketDash = () => {
           resizeMode="contain"
         />
       </View>
-      <GameStart title="Individual_RocketDash" />
+      <Button name="Individual_RocketDash" />
     </Background>
   );
 };
