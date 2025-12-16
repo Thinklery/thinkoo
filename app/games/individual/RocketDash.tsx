@@ -113,7 +113,7 @@ const RocketDash = () => {
   return (
     <Background>
       <View
-        style={{ flex: 1, marginTop: "20%" }}
+        style={{ flex: 1, marginTop: "20%", alignItems: "center" }}
         onLayout={(e) => setLayoutHeight(e.nativeEvent.layout.height)}
         {...panResponder.panHandlers}
       >

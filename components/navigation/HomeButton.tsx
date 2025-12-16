@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "expo-router";
 
 const imageMap: Record<string, any> = {
-  homeBordered: require("@/assets/images/backHome.png"),
+  homeBordered: require("@/assets/images/navigation/homeBordered.png"),
   home: require("@/assets/images/home_inactive.png"),
 };
 

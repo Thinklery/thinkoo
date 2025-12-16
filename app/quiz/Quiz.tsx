@@ -31,6 +31,14 @@ const Quiz = () => {
         justifyContent: "center",
       }}
     >
+      <BackNavigationBar
+        back={resetQuiz}
+        home={() => {
+          resetQuiz();
+          resetNFC();
+        }}
+        style={{ marginTop: "10%" }}
+      />
       <Image
         source={
           isCorrect
@@ -43,17 +51,6 @@ const Quiz = () => {
       <Floater src={winnerImage[winner]} />
 
       <QuizComponent />
-
-      <BackNavigationBar
-        back={resetQuiz}
-        backType="reset"
-        home={() => {
-          resetQuiz();
-          resetNFC();
-        }}
-        homeType="home"
-        style={{ marginBottom: 20, marginTop: -20 }}
-      />
     </Background>
   );
 };
@@ -62,13 +59,11 @@ export default Quiz;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: "20%",
     alignItems: "center",
   },
   bannerImage: {
     width: 350,
     aspectRatio: 2.5,
     marginBottom: -40,
-    marginTop: "10%",
   },
 });

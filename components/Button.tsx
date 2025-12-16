@@ -22,8 +22,8 @@ const Routes: { [key: string]: string } = {
   RocketDash: "",
   RulesCosmicClash: "../rules/RulesCosmicClash",
   RulesRocketDash: "../games/rules/RulesRocketDash",
-  Individual_CosmicClash: "../games/CosmicClash",
-  Individual_RocketDash: "../games/RocketDash",
+  Individual_CosmicClash: "../individual/CosmicClash",
+  Individual_RocketDash: "../individual/RocketDash",
 };
 
 const Button = ({ name }: { name: string }) => {

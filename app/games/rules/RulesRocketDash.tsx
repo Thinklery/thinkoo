@@ -6,21 +6,19 @@ import Button from "@/components/Button";
 
 const RulesRocketDash = () => {
   return (
-    <Background>
+    <Background
+      containerStyle={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <BackNavigationBar />
+      <Image
+        source={require("@/assets/images/games/rocketDashRules.png")}
+        style={styles.image}
+      />
 
-      <View style={styles.contents}>
-        <Image
-          source={require("@/assets/images/rocketDash.png")}
-          style={styles.image}
-          resizeMode="contain"
-        />
-        <Image
-          source={require("@/assets/images/rocketDashRules.png")}
-          style={styles.image}
-          resizeMode="contain"
-        />
-      </View>
       <Button name="Individual_RocketDash" />
     </Background>
   );
@@ -29,11 +27,9 @@ const RulesRocketDash = () => {
 export default RulesRocketDash;
 
 const styles = StyleSheet.create({
-  contents: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
   image: {
-    width: "70%",
+    width: 300,
+  	resizeMode: "contain",
+    marginVertical: -150,
   },
 });

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, ImageBackground, StyleSheet } from "react-native";
-import PopUpOptions from "./QuizOptions";
+import QuizOptions from "./QuizOptions";
 import popUpQuesions from "@/lib/popUpQuestions";
 import useQuizStore from "@/utils/useQuizStore";
 import CustomText from "./CustomText";
@@ -10,18 +10,14 @@ const QuizComponent = () => {
   const optionsSelected = useQuizStore((state) => state.optionsSelected);
 
   const questionNumber = 0;
-  const currentQuestion = popUpQuesions[questionNumber] || {
-    question: "",
-    options: [],
-    answer: "",
-  };
+  const currentQuestion = popUpQuesions[questionNumber]
 
-  const isCorrect = optionsSelected[0] === popUpQuesions[0].answer;
+  const isCorrect = optionsSelected[questionNumber] === popUpQuesions[questionNumber].answer;
 
   return (
     <View style={styles.wrapper}>
       <ImageBackground
-        source={require("@/assets/images/quizFrame.png")}
+        source={require("@/assets/images/quiz/quizFrame.png")}
         style={styles.background}
         resizeMode="contain"
       >
@@ -35,7 +31,7 @@ const QuizComponent = () => {
                 padding: 10,
               }}
             >
-              {popUpQuesions[0].explaination}
+              {popUpQuesions[questionNumber].explaination}
             </CustomText>
           ) : (
             <>
@@ -60,7 +56,7 @@ const QuizComponent = () => {
                 {currentQuestion.question}
               </CustomText>
               {currentQuestion.options.map((val, index) => (
-                <PopUpOptions
+                <QuizOptions
                   key={index}
                   onPress={() => setOptionsSelected(val, 0)}
                   option={val}

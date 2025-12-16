@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "expo-router";
 
 const imageMap: Record<string, any> = {
-  backBordered: require("@/assets/images/backButton.png"),
+  backBordered: require("@/assets/images/navigation/backBordered.png"),
   reset: require("@/assets/images/reset.png"),
 };
 

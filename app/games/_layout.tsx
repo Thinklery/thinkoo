@@ -6,7 +6,7 @@ const _layout = () => {
     <Stack>
       <Stack.Screen name="sync" options={{ headerShown: false }} />
       <Stack.Screen name="rules" options={{ headerShown: false }} />
-      <Stack.Screen name="games" options={{ headerShown: false }} />
+      <Stack.Screen name="individual" options={{ headerShown: false }} />
     </Stack>
   );
 };

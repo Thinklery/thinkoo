@@ -16,7 +16,7 @@ const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
       />
 
       <ImageBackground
-        source={require("@/assets/images/quizFrame.png")}
+        source={require("@/assets/images/quiz/quizFrame.png")}
         style={styles.frameImage}
         resizeMode="contain"
       >

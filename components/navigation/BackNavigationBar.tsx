@@ -8,13 +8,13 @@ const BackNavigationBar = ({
   home,
   backType,
   homeType,
-	style
+  style,
 }: {
   back?: () => void;
   home?: () => void;
   backType?: string;
   homeType?: string;
-	style?: object;
+  style?: object;
 }) => {
   return (
     <View style={[styles.buttonsRow, style]}>
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "90%",
-    alignSelf: "center",
+		alignItems: "center",
   },
 });
