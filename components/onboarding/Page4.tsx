@@ -13,7 +13,7 @@ const Page4 = () => {
         style={styles.background}
       />
       <Image
-        source={require("../../assets/images/onboarding4.png")}
+        source={require("../../assets/images/onboarding/onboarding4.png")}
         resizeMode="contain"
         style={styles.content}
       />

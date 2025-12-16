@@ -3,7 +3,7 @@ import React from "react";
 import PlushieImageCard from "./PlushieImageCard";
 import usePlushieStore from "@/utils/usePlushieStore";
 import useNfcStore from "@/utils/useNfcStore";
-import NFC from "./NFC";
+import Nfc from "./Nfc";
 
 const playerArr: Record<string, any> = {
   player1: require("@/assets/images/player1.png"),
@@ -21,7 +21,7 @@ const PlayerBox = ({ player }: { player: string }) => {
       {NfcId[0] ? (
         <PlushieImageCard type={plushies[0].type.type} />
       ) : (
-        <NFC index={0} />
+        <Nfc index={0} />
       )}
     </View>
   );

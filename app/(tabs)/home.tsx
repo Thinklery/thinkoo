@@ -1,6 +1,13 @@
-import { View, Linking, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Linking,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import React, { useEffect } from "react";
-import { postPlushieInfo } from "@/utils/plushie";
+import { getPlushieInfo, postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
 import useNfcStore from "@/utils/useNfcStore";
 import Button from "@/components/Button";
@@ -33,8 +40,21 @@ const Home = () => {
       <View style={styles.container}>
         <Image
           source={require("@/assets/images/home_astro.png")}
-          style={{ resizeMode: "contain", width: 300, height: 300}}
+          style={{ resizeMode: "contain", width: 300, height: 300 }}
         />
+        {/* <TouchableOpacity
+          onPress={() => getPlushieInfo("04AB165AC12A81")}
+          style={{
+            marginBottom: 20,
+            height: 100,
+            width: 100,
+            backgroundColor: "lightgray",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text>Get Plushie Info</Text>
+        </TouchableOpacity> */}
 
         <Button name="FindYourToy" />
         <Button name="WhatPlanetAreYou" />
@@ -49,5 +69,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-		alignItems: "center",},
+    alignItems: "center",
+  },
 });

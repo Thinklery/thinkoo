@@ -18,7 +18,7 @@ const Onboardng1Button = () => {
     <View>
       <TouchableOpacity onPress={handlePress}>
         <Image
-          source={require("../../assets/images/onboarding1Next.png")}
+          source={require("../../assets/images/onboarding/onboarding1Next.png")}
           resizeMode="contain"
           style={{ height: 200, width: 200, marginTop: 20 }}
         ></Image>

@@ -7,7 +7,7 @@ import NfcManager, { NfcTech, TagEvent } from "react-native-nfc-manager";
 
 NfcManager.start();
 
-const NFC = ({ index }: { index: number }) => {
+const Nfc = ({ index }: { index: number }) => {
   const setPlushies = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
   const [tagData, setTagData] = React.useState<TagEvent | null>(null);
@@ -56,7 +56,7 @@ const NFC = ({ index }: { index: number }) => {
   );
 };
 
-export default NFC;
+export default Nfc;
 
 const styles = StyleSheet.create({
   container: {

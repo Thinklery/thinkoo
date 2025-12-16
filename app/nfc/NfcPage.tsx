@@ -1,6 +1,6 @@
 import { View, StyleSheet } from "react-native";
 import React from "react";
-import NFC from "@/components/NFC";
+import Nfc from "@/components/Nfc";
 import Background from "@/components/Background";
 import PlushieInfoCard from "@/components/PlushieInfoCard";
 import useNfcStore from "@/utils/useNfcStore";
@@ -18,7 +18,7 @@ const NFCPage = () => {
         {NfcId[0] ? (
           <PlushieInfoCard plushie={plushies[0]} />
         ) : (
-          <NFC index={0} />
+          <Nfc index={0} />
         )}
       </View>
     </Background>
