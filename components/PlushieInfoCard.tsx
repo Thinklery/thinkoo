@@ -3,9 +3,10 @@ import React from "react";
 import CustomText from "./CustomText";
 
 const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
-  const imageSource = plushie.type?.type
+  const imageSource = plushie.type?.type === "Moon"
     ? require("@/assets/images/moon.png")
     : require("@/assets/images/mars.png");
+	console.log(imageSource)
 
   return (
     <View style={styles.container}>

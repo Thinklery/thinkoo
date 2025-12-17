@@ -24,23 +24,24 @@ export const postPlushieInfo = async (nfcId: string, name: string) => {
   console.log("postPlushieInfo called successfully");
   const plushieInfo = await getPlushieInfo(nfcId);
 
-  if (plushieInfo && plushieInfo.data) {
-    return plushieInfo.data;
-  }
-
   try {
-    const plushieInfoAfterPost = await fetchAPI(
-      "https://thinkoo-backend.vercel.app/api/post",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_SECRET}`,
-        },
-        body: JSON.stringify({ nfcId, name }),
-      }
-    );
-    return plushieInfoAfterPost.data;
+    if (plushieInfo && plushieInfo.data) {
+      return plushieInfo.data;
+    } else {
+      const plushieInfoAfterPost = await fetchAPI(
+        "https://thinkoo-backend.vercel.app/api/post",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.API_SECRET}`,
+          },
+          body: JSON.stringify({ nfcId, name }),
+        }
+      );
+
+      return plushieInfoAfterPost.data;
+    }
   } catch (e) {
     console.log("Unable to post plushie info to backend", e);
     return null;

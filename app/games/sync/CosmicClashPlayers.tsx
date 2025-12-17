@@ -1,6 +1,5 @@
 import React from "react";
 import Background from "@/components/Background";
-import { View } from "react-native";
 import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 import PlayerBox from "@/components/PlayerBox";
 import Button from "@/components/Button";

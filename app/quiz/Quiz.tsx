@@ -1,6 +1,6 @@
-import { View, Image, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import React from "react";
-import { useGlobalSearchParams, useLocalSearchParams } from "expo-router";
+import { useGlobalSearchParams } from "expo-router";
 import Background from "@/components/Background";
 import QuizComponent from "@/components/QuizComponent";
 import useQuizStore from "@/utils/useQuizStore";
@@ -31,14 +31,6 @@ const Quiz = () => {
         justifyContent: "center",
       }}
     >
-      <BackNavigationBar
-        back={resetQuiz}
-        home={() => {
-          resetQuiz();
-          resetNFC();
-        }}
-        style={{ marginTop: "10%" }}
-      />
       <Image
         source={
           isCorrect
@@ -48,9 +40,19 @@ const Quiz = () => {
         resizeMode="contain"
         style={styles.bannerImage}
       />
-      <Floater src={winnerImage[winner]} />
+      <Floater src={winnerImage[String(winner)]} />
 
       <QuizComponent />
+      <BackNavigationBar
+        backType="reset"
+        back={resetQuiz}
+        homeType="home"
+        home={() => {
+          resetQuiz();
+          resetNFC();
+        }}
+        style={{ marginBottom: 20 }}
+      />
     </Background>
   );
 };
@@ -58,12 +60,10 @@ const Quiz = () => {
 export default Quiz;
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
   bannerImage: {
-    width: 350,
-    aspectRatio: 2.5,
+    width: "80%",
+    aspectRatio: 2.3,
     marginBottom: -40,
+    marginTop: "10%",
   },
 });

@@ -15,7 +15,7 @@ const NFCPage = () => {
     <Background>
       <View style={styles.contents}>
         <BackNavigationBar />
-        {NfcId[0] ? (
+        {plushies[0].name !== "" ? (
           <PlushieInfoCard plushie={plushies[0]} />
         ) : (
           <Nfc index={0} />

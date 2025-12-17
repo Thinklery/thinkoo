@@ -10,6 +10,11 @@ const playerArr: Record<string, any> = {
   player2: require("@/assets/images/player2.png"),
 };
 
+const playerId: Record<string, number> = {
+  player1: 0,
+  player2: 1,
+};
+
 const PlayerBox = ({ player }: { player: string }) => {
   const plushies = usePlushieStore((state) => state.plushies);
   const NfcId = useNfcStore((state) => state.NfcId);
@@ -18,10 +23,10 @@ const PlayerBox = ({ player }: { player: string }) => {
     <View style={styles.playerBox}>
       <Image source={playerArr[player]} style={styles.playerLabel} />
 
-      {NfcId[0] ? (
-        <PlushieImageCard type={plushies[0].type.type} />
+      {plushies[playerId[player]].name !== "" ? (
+        <PlushieImageCard type={plushies[playerId[player]].type.type} />
       ) : (
-        <Nfc index={0} />
+        <Nfc index={playerId[player]} />
       )}
     </View>
   );

@@ -3,6 +3,7 @@ import React from "react";
 import Background from "@/components/Background";
 import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 import Button from "@/components/Button";
+import { router } from "expo-router";
 
 const RulesRocketDash = () => {
   return (
@@ -14,12 +15,12 @@ const RulesRocketDash = () => {
       }}
     >
       <BackNavigationBar />
-      <Image
-        source={require("@/assets/images/games/rocketDashRules.png")}
-        style={styles.image}
-      />
-
-      <Button name="Individual_RocketDash" />
+      	<Image
+	        source={require("@/assets/images/games/rocketDashRules.png")}
+	        style={styles.image}
+	      />
+	
+	      <Button name="Individual_RocketDash" />
     </Background>
   );
 };
@@ -28,8 +29,8 @@ export default RulesRocketDash;
 
 const styles = StyleSheet.create({
   image: {
+		height: 500,
     width: 300,
-  	resizeMode: "contain",
-    marginVertical: -150,
+    resizeMode: "contain",
   },
 });
