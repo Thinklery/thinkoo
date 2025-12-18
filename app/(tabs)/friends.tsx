@@ -8,9 +8,9 @@ import {
   Alert,
   StyleSheet,
 } from "react-native";
-import { router } from "expo-router";
 import { getFriends } from "@/utils/friendsApi";
 import AddFriendModal from "@/components/AddFriendModal";
+import Background from "@/components/Background";
 
 type FriendRow = {
   id: string;
@@ -39,58 +39,62 @@ export default function FriendsScreen() {
   }, [load]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.row}>
-        <TouchableOpacity
-          style={styles.primaryBtn}
-          onPress={() => setOpen(true)}
-        >
-          <Text style={styles.primaryBtnText}>Add friend</Text>
-        </TouchableOpacity>
-      </View>
+    <Background>
+      <View style={styles.container}>
+        <View style={styles.row}>
+          <TouchableOpacity
+            style={styles.primaryBtn}
+            onPress={() => setOpen(true)}
+          >
+            <Text style={styles.primaryBtnText}>Add friend</Text>
+          </TouchableOpacity>
+        </View>
 
-      {loading ? (
-        <View style={styles.center}>
-          <ActivityIndicator />
-          <Text style={styles.muted}>Loading…</Text>
-        </View>
-      ) : friends.length === 0 ? (
-        <View style={styles.center}>
-          <Text style={styles.muted}>
-            No friends yet. Add one with a friend code.
-          </Text>
-        </View>
-      ) : (
-        <FlatList
-          data={friends}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.flatListContainer}
-          renderItem={({ item }) => (
-            <View style={styles.card}>
-              <Text style={styles.cardTitle}>{item.display_name}</Text>
-              <Text style={styles.cardSub} numberOfLines={1}>
-                ID: {item.id}
-              </Text>
-            </View>
-          )}
-        />
-      )}
-      <AddFriendModal onClose={() => setOpen(false)} Visibility={open} />
-    </View>
+        {loading ? (
+          <View style={styles.center}>
+            <ActivityIndicator />
+            <Text style={styles.muted}>Loading…</Text>
+          </View>
+        ) : friends.length === 0 ? (
+          <View style={styles.center}>
+            <Text style={styles.muted}>
+              No friends yet. Add one with a friend code.
+            </Text>
+          </View>
+        ) : (
+          <FlatList
+            data={friends}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.flatListContainer}
+            renderItem={({ item }) => (
+              <View style={styles.card}>
+                <Text style={styles.cardTitle}>{item.display_name}</Text>
+                <Text style={styles.cardSub} numberOfLines={1}>
+                  ID: {item.id}
+                </Text>
+              </View>
+            )}
+          />
+        )}
+        <AddFriendModal onClose={() => setOpen(false)} Visibility={open} />
+      </View>
+    </Background>
   );
 }
 
 const buttonColour = "#000";
 const buttonTextColour = "#fff";
-const loadingTextColour = "#666";
-const cardBorderColour = "#eee";
+const cardFillColour = "#fff";
+const cardBorderColour = "#2f2f2fb5";
 const cardSubTextColour = "#444";
+const loadingTextColour = "#666";
 
 const styles = StyleSheet.create({
   card: {
+    backgroundColor: cardFillColour,
     borderColor: cardBorderColour,
     borderRadius: 12,
-    borderWidth: 1,
+    borderWidth: 2,
     marginBottom: 10,
     padding: 12,
   },

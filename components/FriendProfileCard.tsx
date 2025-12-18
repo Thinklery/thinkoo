@@ -1,5 +1,4 @@
-import { Text, View, Image } from "react-native";
-import * as Clipboard from "expo-clipboard";
+import { Text, View, Image, StyleSheet } from "react-native";
 
 export default function FriendProfileCard({
   name,
@@ -9,32 +8,12 @@ export default function FriendProfileCard({
   userId: string;
 }) {
   return (
-    <View
-      style={{
-        backgroundColor: "lightgray",
-        padding: 20,
-        borderRadius: 10,
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: "white",
-          padding: 10,
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 10,
-          justifyContent: "space-between",
-          borderRadius: 8,
-        }}
-      >
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+    <View style={styles.card}>
+      <View style={styles.cardMainContentLayout}>
+        <View style={styles.cardProfileInfoLayout}>
           <Image
             source={require("../assets/images/moon.png")}
-            style={{
-              resizeMode: "contain",
-              width: 50,
-              height: 50,
-            }}
+            style={styles.profileImage}
           />
           <View>
             <Text>Name: JohnDoe</Text>
@@ -43,18 +22,52 @@ export default function FriendProfileCard({
         </View>
 
         <Image
-          source={require("../assets/images/copy_icon.png")}
-          style={{
-            resizeMode: "contain",
-            width: 20,
-            height: 20,
-            paddingHorizontal: 20,
-          }}
-          onTouchEnd={() => {
-            Clipboard.setStringAsync(userId);
-          }}
+          source={require("../assets/images/reject_icon.png")}
+          style={styles.rejectIconImage}
+        />
+        <Image
+          source={require("../assets/images/accept_icon.png")}
+          style={styles.acceptIconImage}
         />
       </View>
     </View>
   );
 }
+
+const cardFillColour = "#fff";
+
+const styles = StyleSheet.create({
+  acceptIconImage: {
+    height: 28,
+    resizeMode: "contain",
+    width: 28,
+  },
+  card: {
+    backgroundColor: cardFillColour,
+    borderRadius: 10,
+    padding: 8,
+  },
+  cardMainContentLayout: {
+    alignItems: "center",
+    borderRadius: 8,
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "space-between",
+    padding: 10,
+  },
+  cardProfileInfoLayout: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10,
+  },
+  profileImage: {
+    height: 50,
+    resizeMode: "contain",
+    width: 50,
+  },
+  rejectIconImage: {
+    height: 25,
+    resizeMode: "contain",
+    width: 25,
+  },
+});
