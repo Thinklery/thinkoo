@@ -54,3 +54,26 @@ declare interface OnboardingStoreType {
   name: string;
   setName: (name: string) => void;
 }
+
+
+declare interface Question {
+  question: string;
+  options: Option[];
+}
+
+declare interface PersonalityStoreType {
+  currentPage: number;
+  setPage: (page: number) => void;
+  optionsSelected: (number | null)[];
+  setOptionsSelected: (question: number, option: number) => void;
+  calculateResult: () => void;
+  resetEverything: () => void;
+  result: string | null;
+}
+
+declare interface PersonalityOptionsType {
+  name: string;
+  onClick: () => void;
+  clicked: number | null;
+  index: number;
+}
