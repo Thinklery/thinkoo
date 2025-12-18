@@ -38,18 +38,12 @@ export default function FriendsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Friends</Text>
-
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.primaryBtn}
           onPress={() => router.push("/addFriend")}
         >
           <Text style={styles.primaryBtnText}>Add friend</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.secondaryBtn} onPress={load}>
-          <Text style={styles.secondaryBtnText}>Refresh</Text>
         </TouchableOpacity>
       </View>
 
@@ -68,7 +62,7 @@ export default function FriendsScreen() {
         <FlatList
           data={friends}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={{ paddingTop: 12, paddingBottom: 32 }}
+          contentContainerStyle={styles.flatListContainer}
           renderItem={({ item }) => (
             <View style={styles.card}>
               <Text style={styles.cardTitle}>{item.display_name}</Text>
@@ -83,33 +77,56 @@ export default function FriendsScreen() {
   );
 }
 
+const buttonColour = "#000";
+const buttonTextColour = "#fff";
+const loadingTextColour = "#666";
+const cardBorderColour = "#eee";
+const cardSubTextColour = "#444";
+
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
-  title: { fontSize: 28, fontWeight: "700" },
-  row: { flexDirection: "row", gap: 10, marginTop: 12 },
-  primaryBtn: {
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    borderRadius: 10,
-    backgroundColor: "#111",
-  },
-  primaryBtnText: { color: "#fff", fontWeight: "600" },
-  secondaryBtn: {
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    borderRadius: 10,
-    backgroundColor: "#eee",
-  },
-  secondaryBtnText: { color: "#111", fontWeight: "600" },
-  center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 8 },
-  muted: { color: "#666" },
   card: {
-    borderWidth: 1,
-    borderColor: "#eee",
+    borderColor: cardBorderColour,
     borderRadius: 12,
-    padding: 12,
+    borderWidth: 1,
     marginBottom: 10,
+    padding: 12,
   },
-  cardTitle: { fontSize: 16, fontWeight: "700" },
-  cardSub: { marginTop: 4, color: "#444" },
+  cardSub: {
+    color: cardSubTextColour,
+    marginTop: 4,
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  center: {
+    alignItems: "center",
+    flex: 1,
+    gap: 8,
+    justifyContent: "center",
+  },
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+  flatListContainer: {
+    paddingBottom: 32,
+    paddingTop: 12,
+  },
+  muted: { color: loadingTextColour },
+  primaryBtn: {
+    backgroundColor: buttonColour,
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  primaryBtnText: {
+    color: buttonTextColour,
+    fontWeight: "600",
+  },
+  row: {
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 12,
+  },
 });
