@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { getFriends } from "@/utils/friendsApi";
+import AddFriendModal from "@/components/AddFriendModal";
 
 type FriendRow = {
   id: string;
@@ -19,6 +20,7 @@ type FriendRow = {
 export default function FriendsScreen() {
   const [loading, setLoading] = useState(true);
   const [friends, setFriends] = useState<FriendRow[]>([]);
+  const [open, setOpen] = useState(false);
 
   const load = useCallback(async () => {
     try {
@@ -41,7 +43,7 @@ export default function FriendsScreen() {
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.primaryBtn}
-          onPress={() => router.push("/addFriend")}
+          onPress={() => setOpen(true)}
         >
           <Text style={styles.primaryBtnText}>Add friend</Text>
         </TouchableOpacity>
@@ -73,6 +75,7 @@ export default function FriendsScreen() {
           )}
         />
       )}
+      <AddFriendModal onClose={() => setOpen(false)} Visibility={open} />
     </View>
   );
 }

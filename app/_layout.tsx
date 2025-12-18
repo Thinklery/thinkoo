@@ -29,6 +29,7 @@ const RootLayout = () => {
       <Stack.Screen name="games" options={{ headerShown: false }} />
       <Stack.Screen name="nfc" options={{ headerShown: false }} />
       <Stack.Screen name="quiz" options={{ headerShown: false }} />
+      <Stack.Screen name="friends" options={{ headerShown: false }} />
     </Stack>
   );
 };
