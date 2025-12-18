@@ -33,19 +33,19 @@ const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) =>
 export default HomeButton;
 
 const styles = StyleSheet.create({
+  button: {
+    alignItems: "center",
+    height: 48,
+    justifyContent: "center",
+    width: 48,
+  },
   container: {
     alignItems: "flex-start",
     marginLeft: 20,
     marginTop: 20,
   },
-  button: {
-    width: 48,
-    height: 48,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   image: {
-    width: "100%",
     height: "100%",
+    width: "100%",
   },
 });

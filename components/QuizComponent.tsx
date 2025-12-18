@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
+import { View, ImageBackground, StyleSheet } from "react-native";
 import QuizOptions from "./QuizOptions";
 import popUpQuesions from "@/lib/popUpQuestions";
 import useQuizStore from "@/utils/useQuizStore";
@@ -10,9 +10,10 @@ const QuizComponent = () => {
   const optionsSelected = useQuizStore((state) => state.optionsSelected);
 
   const questionNumber = 0;
-  const currentQuestion = popUpQuesions[questionNumber]
+  const currentQuestion = popUpQuesions[questionNumber];
 
-  const isCorrect = optionsSelected[questionNumber] === popUpQuesions[questionNumber].answer;
+  const isCorrect =
+    optionsSelected[questionNumber] === popUpQuesions[questionNumber].answer;
 
   return (
     <View style={styles.wrapper}>
@@ -23,36 +24,15 @@ const QuizComponent = () => {
       >
         <View style={styles.content}>
           {isCorrect ? (
-            <CustomText
-              style={{
-                color: "white",
-                fontFamily: "Poppins-Bold",
-                fontSize: 16,
-                padding: 10,
-              }}
-            >
+            <CustomText style={styles.header1}>
               {popUpQuesions[questionNumber].explaination}
             </CustomText>
           ) : (
             <>
-              <CustomText
-                style={{
-                  color: "white",
-                  fontFamily: "Poppins-Bold",
-                  fontSize: 16,
-                  padding: 10,
-                }}
-              >
+              <CustomText style={styles.header1}>
                 Answer one more to win the game!
               </CustomText>
-              <CustomText
-                style={{
-                  color: "white",
-                  fontFamily: "Poppins-Bold",
-                  fontSize: 14,
-                  paddingBottom: 10,
-                }}
-              >
+              <CustomText style={styles.header2}>
                 {currentQuestion.question}
               </CustomText>
               {currentQuestion.options.map((val, index) => (
@@ -73,28 +53,29 @@ const QuizComponent = () => {
 export default QuizComponent;
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   background: {
-    borderRadius: 12,
-    justifyContent: "center",
     alignItems: "center",
+    borderRadius: 12,
     height: 500,
-    width: 350,
+    justifyContent: "center",
     padding: 20,
+    width: 350,
   },
   content: {
-    width: "100%",
     alignItems: "center",
+    width: "100%",
   },
-  questionText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-    color: "#fff", // use a color that contrasts your background
+  header1: {
+    fontSize: 16,
+    padding: 10,
+  },
+  header2: {
+    fontSize: 14,
+    paddingBottom: 10,
+  },
+  wrapper: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
 });

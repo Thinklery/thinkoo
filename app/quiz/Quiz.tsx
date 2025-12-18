@@ -24,13 +24,7 @@ const Quiz = () => {
   console.log(winner);
 
   return (
-    <Background
-      containerStyle={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Background containerStyle={styles.containerStyle}>
       <Image
         source={
           isCorrect
@@ -51,7 +45,7 @@ const Quiz = () => {
           resetQuiz();
           resetNFC();
         }}
-        style={{ marginBottom: 40 }}
+        style={styles.navigationBar}
       />
     </Background>
   );
@@ -61,9 +55,18 @@ export default Quiz;
 
 const styles = StyleSheet.create({
   bannerImage: {
-    width: "80%",
     aspectRatio: 2.3,
     marginBottom: -40,
     marginTop: "10%",
+    width: "80%",
   },
+
+  containerStyle: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+	navigationBar :{
+		marginBottom: 40
+	}
 });

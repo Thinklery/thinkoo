@@ -18,8 +18,8 @@ export default Learning;
 
 const styles = StyleSheet.create({
   contents: {
-    flex: 1,
     alignItems: "center",
+    flex: 1,
     justifyContent: "center",
   },
 });

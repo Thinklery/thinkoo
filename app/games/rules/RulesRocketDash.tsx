@@ -1,26 +1,19 @@
-import { StyleSheet, Image, View } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import React from "react";
 import Background from "@/components/Background";
 import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 import Button from "@/components/Button";
-import { router } from "expo-router";
 
 const RulesRocketDash = () => {
   return (
-    <Background
-      containerStyle={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Background containerStyle={styles.background}>
       <BackNavigationBar />
-      	<Image
-	        source={require("@/assets/images/games/rocketDashRules.png")}
-	        style={styles.image}
-	      />
-	
-	      <Button name="Individual_RocketDash" />
+      <Image
+        source={require("@/assets/images/games/rocketDashRules.png")}
+        style={styles.image}
+      />
+
+      <Button name="Individual_RocketDash" />
     </Background>
   );
 };
@@ -28,9 +21,14 @@ const RulesRocketDash = () => {
 export default RulesRocketDash;
 
 const styles = StyleSheet.create({
+  background: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
   image: {
-		height: 500,
-    width: 300,
+    height: 500,
     resizeMode: "contain",
+    width: 300,
   },
 });

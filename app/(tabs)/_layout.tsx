@@ -1,12 +1,8 @@
 import CustomText from "@/components/CustomText";
+import { Colours } from "@/lib/colours";
 import { Tabs } from "expo-router";
 import React from "react";
-import {
-  ImageSourcePropType,
-  View,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { ImageSourcePropType, View, Image, StyleSheet } from "react-native";
 
 const TabIcon = ({
   activeSource,
@@ -80,22 +76,22 @@ const _layout = () => {
 export default _layout;
 
 const styles = StyleSheet.create({
+  TabBarText: {
+    color: Colours.white,
+    fontFamily: "Poppins-Regular",
+    fontSize: 12,
+    textAlign: "center",
+    width: 72,
+  },
   TabIconContainer: {
-    flexDirection: "column", 
     alignItems: "center",
+    flexDirection: "column",
+    gap: 10,
     justifyContent: "center",
-		gap: 10
   },
   TabIconImage: {
-    width:48,
     height: 48,
     resizeMode: "contain",
-  },
-  TabBarText: {
-    fontFamily: "Poppins-Regular",
-    color: "white",
-    fontSize: 12,
-    width: 72,
-    textAlign: "center",
+    width: 48,
   },
 });

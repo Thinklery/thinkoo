@@ -28,9 +28,9 @@ export default BackNavigationBar;
 
 const styles = StyleSheet.create({
   buttonsRow: {
+    alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "90%",
-		alignItems: "center",
+		width: "90%",
   },
 });

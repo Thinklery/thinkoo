@@ -1,4 +1,4 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground } from "react-native";
 import React, { useState } from "react";
 import { images } from "@/constants/index";
 
@@ -27,15 +27,15 @@ export default Background;
 
 const styles = StyleSheet.create({
   background: {
-    flex: 1,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
     bottom: 0,
-    width: "100%",
+    flex: 1,
     height: "100%",
-    zIndex: -1,
     justifyContent: "center",
+    left: 0,
+    position: "absolute",
+    right: 0,
+    top: 0,
+    width: "100%",
+    zIndex: -1,
   },
 });

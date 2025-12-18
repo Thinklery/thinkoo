@@ -29,20 +29,17 @@ const Page2 = () => {
 export default Page2;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   content: {
     alignSelf: "center",
-    width: "90%",
     height: "30%",
     marginTop: "20%",
+    width: "90%",
   },
   progress: {
-    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "row",
     gap: 50,
+    justifyContent: "center",
     marginTop: 20,
   },
 });

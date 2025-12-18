@@ -16,8 +16,8 @@ interface FloaterProps {
 export default function Floater({ src, style }: FloaterProps) {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
-  const scale = useSharedValue(0);
-  const rotate = useSharedValue(0);
+  // const scale = useSharedValue(0);
+  // const rotate = useSharedValue(0);
 
   useEffect(() => {
     const xDuration = Math.random() * 4000 + 3000;
@@ -58,7 +58,7 @@ export default function Floater({ src, style }: FloaterProps) {
     //   -1,
     //   true
     // );
-  }, []);
+  }, [translateX, translateY]);
 
   const floatingStyle = useAnimatedStyle(() => ({
     transform: [
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   image: {
-    width: 180, // REQUIRED in RN
-    height: 180, // REQUIRED in RN
+    height: 180,
+    width: 180, 
   },
   productSlot: {
-    position: "absolute",
     bottom: 0,
-    left: "10%",
-    width: "80%",
     height: "20%",
+    left: "10%",
+    position: "absolute",
+    width: "80%",
   },
 });

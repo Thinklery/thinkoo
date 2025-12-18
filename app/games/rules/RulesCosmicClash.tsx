@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import React from "react";
 import Background from "@/components/Background";
 import BackNavigationBar from "@/components/navigation/BackNavigationBar";
@@ -6,13 +6,7 @@ import Button from "@/components/Button";
 
 const RulesCosmicClash = () => {
   return (
-    <Background
-      containerStyle={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Background containerStyle={styles.background}>
       <BackNavigationBar />
       <Image
         source={require("@/assets/images/games/cosmicClashRules.png")}
@@ -27,11 +21,14 @@ const RulesCosmicClash = () => {
 export default RulesCosmicClash;
 
 const styles = StyleSheet.create({
+  background: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
   image: {
-    width: 300,
+    marginVertical: -100,
     resizeMode: "contain",
-		marginVertical: -100,
+    width: 300,
   },
 });
-
-

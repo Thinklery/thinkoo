@@ -18,8 +18,8 @@ export default Page1;
 
 const styles = StyleSheet.create({
   background: {
+    alignItems: "center",
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
   },
 });

@@ -1,13 +1,6 @@
-import {
-  View,
-  Linking,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { View, Linking, StyleSheet, Image } from "react-native";
 import React, { useEffect } from "react";
-import { getPlushieInfo, postPlushieInfo } from "@/utils/plushie";
+import { postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
 import useNfcStore from "@/utils/useNfcStore";
 import Button from "@/components/Button";
@@ -15,7 +8,6 @@ import Button from "@/components/Button";
 import Background from "@/components/Background";
 
 const Home = () => {
-  const plushies = usePlushieStore((state) => state.plushies);
   const setPlushie = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
 
@@ -33,14 +25,14 @@ const Home = () => {
     Linking.getInitialURL().then((url) => {
       if (url) handleDeepLink(url);
     });
-  }, []);
+  }, [setNfcId, setPlushie]);
 
   return (
     <Background>
       <View style={styles.container}>
         <Image
           source={require("@/assets/images/home_astro.png")}
-          style={{ resizeMode: "contain", width: 300, height: 300 }}
+          style={styles.astro}
         />
         {/* <TouchableOpacity
           onPress={() => getPlushieInfo("04AB165AC12A81")}
@@ -66,9 +58,14 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  astro: {
+    height: 300,
+    resizeMode: "contain",
+    width: 300,
+  },
   container: {
+    alignItems: "center",
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
   },
 });

@@ -3,17 +3,11 @@ import Background from "@/components/Background";
 import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 import PlayerBox from "@/components/PlayerBox";
 import Button from "@/components/Button";
+import { StyleSheet } from "react-native";
 
 const CosmicClashPlayers = () => {
   return (
-    <Background
-      containerStyle={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-				gap: 10
-      }}
-    >
+    <Background containerStyle={styles.background}>
       <BackNavigationBar />
       <PlayerBox player="player1" />
 
@@ -24,3 +18,11 @@ const CosmicClashPlayers = () => {
 };
 
 export default CosmicClashPlayers;
+
+const styles = StyleSheet.create({
+  background: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+});

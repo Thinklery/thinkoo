@@ -9,7 +9,7 @@ module.exports = defineConfig([
   expo,
 
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/**/**/**/**/*.ts", "**/**/**/**/**/*.tsx"],
 
     languageOptions: {
       parser: tsparser,

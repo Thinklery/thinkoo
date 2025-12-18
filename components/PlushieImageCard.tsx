@@ -22,7 +22,7 @@ export default PlushieImageCard;
 
 const styles = StyleSheet.create({
   image: {
-    width: 200,
     height: 200,
+    width: 200,
   },
 });

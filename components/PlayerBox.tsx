@@ -2,7 +2,6 @@ import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import PlushieImageCard from "./PlushieImageCard";
 import usePlushieStore from "@/utils/usePlushieStore";
-import useNfcStore from "@/utils/useNfcStore";
 import Nfc from "./Nfc";
 
 const playerArr: Record<string, any> = {
@@ -17,7 +16,6 @@ const playerId: Record<string, number> = {
 
 const PlayerBox = ({ player }: { player: string }) => {
   const plushies = usePlushieStore((state) => state.plushies);
-  const NfcId = useNfcStore((state) => state.NfcId);
 
   return (
     <View style={styles.playerBox}>
@@ -40,8 +38,8 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   playerLabel: {
-    width: 200,
     height: 70,
     resizeMode: "contain",
+    width: 200,
   },
 });

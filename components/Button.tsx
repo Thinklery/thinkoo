@@ -38,8 +38,8 @@ export default Button;
 
 const styles = StyleSheet.create({
   image: {
+    height: 80,
     resizeMode: "contain",
     width: 250,
-    height: 80,
   },
 });

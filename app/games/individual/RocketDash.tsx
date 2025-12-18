@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import CustomText from "@/components/CustomText";
 import Background from "@/components/Background";
 import BackNavigationBar from "@/components/navigation/BackNavigationBar";
+import { Colours } from "@/lib/colours";
 
 const { width } = Dimensions.get("window");
 
@@ -19,7 +20,7 @@ type AsteroidType = {
   number: number;
 };
 
-let asteroidIdCounter = 0;
+// let asteroidIdCounter = 0;
 
 const RocketDash = () => {
   const [asteroids, setAsteroids] = useState<AsteroidType[]>([]);
@@ -113,18 +114,14 @@ const RocketDash = () => {
   return (
     <Background>
       <View
-        style={{ flex: 1, marginTop: "20%", alignItems: "center" }}
+        style={styles.mainContainer}
         onLayout={(e) => setLayoutHeight(e.nativeEvent.layout.height)}
         {...panResponder.panHandlers}
       >
         {/* Custom background */}
         <Image
           source={require("@/assets/images/commonBackground.png")}
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-          }}
+          style={styles.background}
           resizeMode="cover"
         />
 
@@ -134,6 +131,7 @@ const RocketDash = () => {
         {asteroids.map((a) => (
           <View
             key={`asteroid-${a.id}`}
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               position: "absolute",
               left: a.x,
@@ -149,22 +147,13 @@ const RocketDash = () => {
               style={{ width: asteroidSize, height: asteroidSize }}
               resizeMode="contain"
             />
-            <CustomText
-              style={{
-                position: "absolute",
-                color: "black",
-                fontSize: 20,
-                fontFamily: "Poppins-Bold",
-              }}
-            >
-              {a.number}
-            </CustomText>
+            <CustomText style={styles.asteroidText}>{a.number}</CustomText>
           </View>
         ))}
 
-        {/* Spaceship */}
         <Image
           source={require("@/assets/images/games/rocket.png")}
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             position: "absolute",
             left: spaceshipX.current,
@@ -175,23 +164,9 @@ const RocketDash = () => {
           resizeMode="contain"
         />
 
-        {/* Score and Task */}
-        <View
-          style={{
-            position: "absolute",
-            top: 100,
-            alignSelf: "center",
-            alignItems: "center",
-          }}
-        >
-          <CustomText
-            style={{ color: "white", fontSize: 24, fontFamily: "Poppins-Bold" }}
-          >
-            Score: {score}
-          </CustomText>
-          <CustomText
-            style={{ color: "white", fontSize: 24, fontFamily: "Poppins-Bold" }}
-          >
+        <View style={styles.scoreContainer}>
+          <CustomText style={styles.customText}>Score: {score}</CustomText>
+          <CustomText style={styles.customText}>
             Collect {task} numbers!
           </CustomText>
         </View>
@@ -202,4 +177,34 @@ const RocketDash = () => {
 
 export default RocketDash;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  asteroidText: {
+    color: Colours.black,
+    fontFamily: "Poppins-Bold",
+    fontSize: 20,
+    position: "absolute",
+  },
+
+  background: {
+    height: "100%",
+    position: "absolute",
+    width: "100%",
+  },
+  customText: {
+    fontSize: 24,
+  },
+  mainContainer: {
+    alignItems: "center",
+    flex: 1,
+    marginTop: "20%",
+  },
+
+  scoreContainer: {
+    alignItems: "center",
+    alignSelf: "center",
+
+    position: "absolute",
+
+    top: 100,
+  },
+});
