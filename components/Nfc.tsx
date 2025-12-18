@@ -48,19 +48,6 @@ const Nfc = ({ index }: { index: number }) => {
         source={require("@/assets/images/addPlushie.png")}
         style={styles.image}
       />
-      <TouchableOpacity
-        onPress={async () =>
-          setPlushies(await postPlushieInfo("04B21F5AC12A81", "Thinklery"), 0)
-        }
-      >
-			<CustomText style={{ color: "white" }}>
-				Press here
-			</CustomText>
-      </TouchableOpacity>
-
-      <CustomText style={{ color: "white" }}>
-        Data 2:{plushies[0]?.name}
-      </CustomText>
     </TouchableOpacity>
   );
 };
