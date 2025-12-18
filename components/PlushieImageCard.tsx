@@ -9,11 +9,7 @@ export const images: Record<string, any> = {
 const PlushieImageCard = ({ type }: { type: string }) => {
   return (
     <View>
-      <Image
-        source={images[type]}
-        resizeMode="contain"
-        style={styles.image}
-      />
+      <Image source={images[type]} resizeMode="contain" style={styles.image} />
     </View>
   );
 };

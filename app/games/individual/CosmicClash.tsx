@@ -10,7 +10,7 @@ import {
 import Background from "@/components/Background";
 import winPatterns from "@/lib/winPatterns";
 import { router } from "expo-router";
-import{ Colours } from "@/lib/colours";
+import { Colours } from "@/lib/colours";
 
 import GRID_IMAGE from "@/assets/images/games/grid.png";
 import MoonImage from "@/assets/images/games/moon.png";
@@ -93,7 +93,6 @@ const CosmicClash = () => {
 
   //   setPowerUsed(true);
   // };
-
 
   const cellPositions = [
     { top: 0, left: 0 },

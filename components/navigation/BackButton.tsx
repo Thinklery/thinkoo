@@ -40,7 +40,7 @@ export default BackButton;
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    height: 48, 
+    height: 48,
 
     justifyContent: "center",
     width: 48,

@@ -13,11 +13,7 @@ const QuizOptions = ({
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.button}>
-        <CustomText
-          style={styles.customText}
-        >
-          {option}
-        </CustomText>
+        <CustomText style={styles.customText}>{option}</CustomText>
       </TouchableOpacity>
     </View>
   );
@@ -26,19 +22,19 @@ const QuizOptions = ({
 export default QuizOptions;
 
 const styles = StyleSheet.create({
-	button: {
+  button: {
     backgroundColor: Colours.lightGray,
     borderRadius: 21,
-    justifyContent: "center", 
+    justifyContent: "center",
     opacity: 1,
     paddingHorizontal: 12,
-		paddingVertical: 5,
+    paddingVertical: 5,
     width: 250,
   },
   container: {
     margin: 10,
   },
   customText: {
-		fontSize: 14
-	},
+    fontSize: 14,
+  },
 });

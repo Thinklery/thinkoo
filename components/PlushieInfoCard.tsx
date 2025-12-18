@@ -4,10 +4,11 @@ import CustomText from "./CustomText";
 import { Colours } from "@/lib/colours";
 
 const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
-  const imageSource = plushie.type?.type === "Moon"
-    ? require("@/assets/images/games/moon.png")
-    : require("@/assets/images/games/mars.png");
-	console.log(imageSource)
+  const imageSource =
+    plushie.type?.type === "Moon"
+      ? require("@/assets/images/games/moon.png")
+      : require("@/assets/images/games/mars.png");
+  console.log(imageSource);
 
   return (
     <View style={styles.container}>
@@ -19,7 +20,7 @@ const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
 
       <ImageBackground
         source={require("@/assets/images/quiz/quizFrame.png")}
-        style={styles.frameImage}	
+        style={styles.frameImage}
         resizeMode="contain"
       >
         <View style={styles.content}>

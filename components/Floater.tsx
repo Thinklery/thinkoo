@@ -29,7 +29,7 @@ export default function Floater({ src, style }: FloaterProps) {
         easing: Easing.inOut(Easing.ease),
       }),
       -1,
-      true
+      true,
     );
 
     translateY.value = withRepeat(
@@ -38,7 +38,7 @@ export default function Floater({ src, style }: FloaterProps) {
         easing: Easing.inOut(Easing.ease),
       }),
       -1,
-      true
+      true,
     );
 
     // scale.value = withRepeat(
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 180,
-    width: 180, 
+    width: 180,
   },
   productSlot: {
     bottom: 0,

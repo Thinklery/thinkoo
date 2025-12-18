@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
   content: {
     alignSelf: "center",
     height: "30%",
-		marginTop: "20%",
-		width: "90%"
+    marginTop: "20%",
+    width: "90%",
   },
   progress: {
     alignItems: "center",

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-	navigationBar :{
-		marginBottom: 40
-	}
+  navigationBar: {
+    marginBottom: 40,
+  },
 });

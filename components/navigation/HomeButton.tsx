@@ -7,8 +7,13 @@ const imageMap: Record<string, any> = {
   home: require("@/assets/images/navigation/home_inactive.png"),
 };
 
-
-const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) => {
+const HomeButton = ({
+  onPress,
+  type,
+}: {
+  onPress: () => void;
+  type: string;
+}) => {
   const router = useRouter();
 
   return (
