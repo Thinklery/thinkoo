@@ -4,16 +4,16 @@ import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const ProgressBar = () => {
   const currentPage = useOnboardingStore((state) => state.currentPage);
-  const totalPages = 6;
+  const totalPages = 5;
   return (
     <View style={styles.container}>
       {Array.from({ length: totalPages }).map((_, index) => (
         <Image
           key={index}
           source={
-            index + 1 === currentPage
-              ? require("../../assets/images/pill.png")
-              : require("../../assets/images/unfilledPill.png")
+            index + 2 === currentPage
+              ? require("@/assets/images/onboarding/pill.png")
+              : require("@/assets/images/onboarding/unfilledPill.png")
           }
           style={styles.pill}
         />

@@ -1,4 +1,5 @@
 import CustomText from "@/components/CustomText";
+import { Colours } from "@/lib/colours";
 import { Tabs } from "expo-router";
 import React from "react";
 import { ImageSourcePropType, View, Image, StyleSheet } from "react-native";
@@ -45,8 +46,8 @@ const _layout = () => {
           title: "Home",
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              activeSource={require("../../assets/images/home_active.png")}
-              inactiveSource={require("../../assets/images/home_inactive.png")}
+              activeSource={require("@/assets/images/navigation/home_active.png")}
+              inactiveSource={require("@/assets/images/navigation/home_inactive.png")}
               focused={focused}
               label="Home"
             />
@@ -60,8 +61,8 @@ const _layout = () => {
           title: "Games",
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              activeSource={require("../../assets/images/games_active.png")}
-              inactiveSource={require("../../assets/images/games_inactive.png")}
+              activeSource={require("@/assets/images/navigation/games_active.png")}
+              inactiveSource={require("@/assets/images/navigation/games_inactive.png")}
               focused={focused}
               label="Game"
             />
@@ -74,11 +75,9 @@ const _layout = () => {
 
 export default _layout;
 
-const white = "#FFFFFF";
-
 const styles = StyleSheet.create({
   TabBarText: {
-    color: white,
+    color: Colours.white,
     fontFamily: "Poppins-Regular",
     fontSize: 12,
     textAlign: "center",
@@ -87,11 +86,12 @@ const styles = StyleSheet.create({
   TabIconContainer: {
     alignItems: "center",
     flexDirection: "column",
+    gap: 10,
     justifyContent: "center",
   },
   TabIconImage: {
-    height: 72,
+    height: 48,
     resizeMode: "contain",
-    width: 72,
+    width: 48,
   },
 });

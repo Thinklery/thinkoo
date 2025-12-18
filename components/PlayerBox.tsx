@@ -2,26 +2,29 @@ import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import PlushieImageCard from "./PlushieImageCard";
 import usePlushieStore from "@/utils/usePlushieStore";
-import useNfcStore from "@/utils/useNfcStore";
-import NFC from "./NFC";
+import Nfc from "./Nfc";
 
 const playerArr: Record<string, any> = {
-  player1: require("@/assets/images/player1.png"),
-  player2: require("@/assets/images/player2.png"),
+  player1: require("@/assets/images/games/player1.png"),
+  player2: require("@/assets/images/games/player2.png"),
+};
+
+const playerId: Record<string, number> = {
+  player1: 0,
+  player2: 1,
 };
 
 const PlayerBox = ({ player }: { player: string }) => {
   const plushies = usePlushieStore((state) => state.plushies);
-  const NfcId = useNfcStore((state) => state.NfcId);
 
   return (
     <View style={styles.playerBox}>
       <Image source={playerArr[player]} style={styles.playerLabel} />
 
-      {NfcId[0] ? (
-        <PlushieImageCard type={plushies[0].type.type} />
+      {plushies[playerId[player]].name !== "" ? (
+        <PlushieImageCard type={plushies[playerId[player]].type.type} />
       ) : (
-        <NFC index={0} />
+        <Nfc index={playerId[player]} />
       )}
     </View>
   );

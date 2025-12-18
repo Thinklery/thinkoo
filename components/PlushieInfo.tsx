@@ -16,12 +16,6 @@ const white = "#FFFFFF";
 const whiteGrey = "#C4C4C4";
 
 const styles = StyleSheet.create({
-  // button: {
-  //   width: 250,
-  //   paddingVertical: 5,
-  //   paddingHorizontal: 12, // ← adds space from left/right edges
-  //   justifyContent: "center",
-  // },
   container: {
     backgroundColor: whiteGrey,
     margin: 10,

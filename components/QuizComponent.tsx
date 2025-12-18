@@ -1,51 +1,42 @@
 import React from "react";
 import { View, ImageBackground, StyleSheet } from "react-native";
-import PopUpOptions from "./QuizOptions";
+import QuizOptions from "./QuizOptions";
 import popUpQuesions from "@/lib/popUpQuestions";
 import useQuizStore from "@/utils/useQuizStore";
 import CustomText from "./CustomText";
 
-const QuizComponent = ({
-  reset,
-  winner,
-}: {
-  reset: () => void;
-  winner: string | null;
-}) => {
+const QuizComponent = () => {
   const setOptionsSelected = useQuizStore((state) => state.setOptionSelected);
   const optionsSelected = useQuizStore((state) => state.optionsSelected);
 
   const questionNumber = 0;
-  const currentQuestion = popUpQuesions[questionNumber] || {
-    question: "",
-    options: [],
-    answer: "",
-  };
+  const currentQuestion = popUpQuesions[questionNumber];
 
-  const isCorrect = optionsSelected[0] === popUpQuesions[0].answer;
+  const isCorrect =
+    optionsSelected[questionNumber] === popUpQuesions[questionNumber].answer;
 
   return (
     <View style={styles.wrapper}>
       <ImageBackground
-        source={require("@/assets/images/quizFrame.png")}
+        source={require("@/assets/images/quiz/quizFrame.png")}
         style={styles.background}
         resizeMode="contain"
       >
         <View style={styles.content}>
           {isCorrect ? (
-            <CustomText style={styles.explanationText}>
-              {popUpQuesions[0].explaination}
+            <CustomText style={styles.header1}>
+              {popUpQuesions[questionNumber].explaination}
             </CustomText>
           ) : (
             <>
-              <CustomText style={styles.explanationText}>
+              <CustomText style={styles.header1}>
                 Answer one more to win the game!
               </CustomText>
-              <CustomText style={styles.questionText}>
+              <CustomText style={styles.header2}>
                 {currentQuestion.question}
               </CustomText>
               {currentQuestion.options.map((val, index) => (
-                <PopUpOptions
+                <QuizOptions
                   key={index}
                   onPress={() => setOptionsSelected(val, 0)}
                   option={val}
@@ -61,8 +52,6 @@ const QuizComponent = ({
 
 export default QuizComponent;
 
-const white = "#FFFFFF";
-
 const styles = StyleSheet.create({
   background: {
     alignItems: "center",
@@ -76,15 +65,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
-  explanationText: {
-    color: white,
-    fontFamily: "Poppins-Bold",
+  header1: {
     fontSize: 16,
     padding: 10,
   },
-  questionText: {
-    color: white,
-    fontFamily: "Poppins-Bold",
+  header2: {
     fontSize: 14,
     paddingBottom: 10,
   },

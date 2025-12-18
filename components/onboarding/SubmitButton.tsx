@@ -22,7 +22,7 @@ const SubmitButton = ({ name }: Props) => {
     <View>
       <TouchableOpacity onPress={handlePress}>
         {/* <Image
-          source={require("../../assets/images/forwardButton.png")}
+          source={require("@/assets/images/forwardButton.png")}
           resizeMode="contain"
           style={styles.button}
         ></Image> */}

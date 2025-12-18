@@ -1,11 +1,14 @@
 import { View, Image, StyleSheet, ImageBackground } from "react-native";
 import React from "react";
 import CustomText from "./CustomText";
+import { Colours } from "@/lib/colours";
 
 const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
-  const imageSource = plushie.type?.type
-    ? require("@/assets/images/moon.png")
-    : require("@/assets/images/mars.png");
+  const imageSource =
+    plushie.type?.type === "Moon"
+      ? require("@/assets/images/games/moon.png")
+      : require("@/assets/images/games/mars.png");
+  console.log(imageSource);
 
   return (
     <View style={styles.container}>
@@ -16,7 +19,7 @@ const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
       />
 
       <ImageBackground
-        source={require("@/assets/images/quizFrame.png")}
+        source={require("@/assets/images/quiz/quizFrame.png")}
         style={styles.frameImage}
         resizeMode="contain"
       >
@@ -31,8 +34,6 @@ const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
 };
 
 export default PlushieInfoCard;
-
-const white = "#FFFFFF";
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     width: 200,
   },
   text: {
-    color: white,
+    color: Colours.white,
     fontFamily: "Poppins-Bold",
     fontSize: 16,
     paddingVertical: 4,

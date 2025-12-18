@@ -1,3 +1,4 @@
+import { Colours } from "@/lib/colours";
 import React from "react";
 import { Text, TextProps, StyleSheet } from "react-native";
 
@@ -6,9 +7,7 @@ const CustomText = ({ style, ...props }: TextProps) => {
 };
 
 const styles = StyleSheet.create({
-  default: {
-    fontFamily: "Poppins-Regular",
-  },
+  default: { color: Colours.white, fontFamily: "Poppins-Regular" },
 });
 
 export default CustomText;

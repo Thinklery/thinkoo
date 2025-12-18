@@ -9,7 +9,7 @@ const Page2 = () => {
   return (
     <Background>
       <Image
-        source={require("../../assets/images/onboarding2.png")}
+        source={require("@/assets/images/onboarding/onboarding2.png")}
         resizeMode="contain"
         style={styles.content}
       />

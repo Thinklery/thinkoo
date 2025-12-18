@@ -8,12 +8,12 @@ const Page5 = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../assets/images/commonBackground.png")}
+        source={require("@/assets/images/commonBackground.png")}
         resizeMode="cover"
         style={styles.background}
       />
       <Image
-        source={require("../../assets/images/onboarding5.png")}
+        source={require("@/assets/images/onboarding/onboarding5.png")}
         resizeMode="contain"
         style={styles.content}
       />

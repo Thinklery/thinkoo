@@ -4,11 +4,12 @@ export const getPlushieInfo = async (nfcId: string) => {
   console.log("getPlushieInfo called successfully");
   try {
     const plushieInfo = await fetchAPI(
-      `https://localhost:8081/(api)/get?nfcId=${nfcId}`,
+      `https://thinkoo-backend.vercel.app/api/get?nfcId=${nfcId}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.EXPO_PUBLIC_API_SECRET}`,
         },
       },
     );
@@ -22,23 +23,25 @@ export const getPlushieInfo = async (nfcId: string) => {
 export const postPlushieInfo = async (nfcId: string, name: string) => {
   console.log("postPlushieInfo called successfully");
   const plushieInfo = await getPlushieInfo(nfcId);
-  console.log("plushieinfo", plushieInfo);
-  if (plushieInfo && plushieInfo.data) {
-    return plushieInfo.data;
-  }
 
   try {
-    const plushieInfoAfterPost = await fetchAPI(
-      "https://localhost:8081/(api)/post",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    if (plushieInfo && plushieInfo.data) {
+      return plushieInfo.data;
+    } else {
+      const plushieInfoAfterPost = await fetchAPI(
+        "https://thinkoo-backend.vercel.app/api/post",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.EXPO_PUBLIC_API_SECRET}`,
+          },
+          body: JSON.stringify({ nfcId, name }),
         },
-        body: JSON.stringify({ nfcId, name }),
-      },
-    );
-    return plushieInfoAfterPost.data;
+      );
+
+      return plushieInfoAfterPost.data;
+    }
   } catch (e) {
     console.log("Unable to post plushie info to backend", e);
     return null;

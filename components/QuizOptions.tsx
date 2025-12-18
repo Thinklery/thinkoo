@@ -1,8 +1,9 @@
-import { View, Pressable, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import CustomText from "./CustomText";
+import { Colours } from "@/lib/colours";
 
-const PopUpOptions = ({
+const QuizOptions = ({
   option,
   onPress,
 }: {
@@ -11,34 +12,29 @@ const PopUpOptions = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Pressable onPress={onPress} style={styles.button}>
-        <CustomText style={styles.text}>{option}</CustomText>
-      </Pressable>
+      <TouchableOpacity onPress={onPress} style={styles.button}>
+        <CustomText style={styles.customText}>{option}</CustomText>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default PopUpOptions;
-
-const whiteGray = "#C4C4C4";
-const white = "#FFFFFF";
+export default QuizOptions;
 
 const styles = StyleSheet.create({
   button: {
+    backgroundColor: Colours.lightGray,
+    borderRadius: 21,
     justifyContent: "center",
+    opacity: 1,
     paddingHorizontal: 12,
     paddingVertical: 5,
     width: 250,
   },
   container: {
-    backgroundColor: whiteGray,
     margin: 10,
-    opacity: 100,
   },
-
-  text: {
-    color: white,
-    fontFamily: "Poppins-Bold",
+  customText: {
     fontSize: 14,
   },
 });

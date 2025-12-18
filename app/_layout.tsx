@@ -4,10 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const RootLayout = () => {
-  // const [fontsLoaded] = useFonts({
-  //   "Poppins-Regular": require("../assets/fonts/Poppins/Poppins-Regular.ttf"),
-  //   "Poppins-Bold": require("../assets/fonts/Poppins/Poppins-Bold.ttf"),
-  // });
   useEffect(() => {
     const init = async () => {
       const name = await AsyncStorage.getItem("displayName");

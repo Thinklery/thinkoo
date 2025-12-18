@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import React from "react";
 import { useGlobalSearchParams } from "expo-router";
 import Background from "@/components/Background";
@@ -6,11 +6,12 @@ import QuizComponent from "@/components/QuizComponent";
 import useQuizStore from "@/utils/useQuizStore";
 import popUpQuestions from "@/lib/popUpQuestions";
 import useNfcStore from "@/utils/useNfcStore";
-import NavigationBack from "@/components/NavigationBack";
+import BackNavigationBar from "@/components/navigation/BackNavigationBar";
+import Floater from "@/components/Floater";
 
 const winnerImage: Record<string, any> = {
-  Mars: require("@/assets/images/mars.png"),
-  Moon: require("@/assets/images/moon.png"),
+  Mars: require("@/assets/images/games/mars.png"),
+  Moon: require("@/assets/images/games/moon.png"),
 };
 
 const Quiz = () => {
@@ -23,33 +24,28 @@ const Quiz = () => {
   console.log(winner);
 
   return (
-    <Background>
-      <View style={styles.container}>
-        <Image
-          source={
-            isCorrect
-              ? require("@/assets/images/correct.png")
-              : require("@/assets/images/congratulations.png")
-          }
-          resizeMode="contain"
-          style={styles.bannerImage}
-        />
-        <Image
-          source={winnerImage[winner]}
-          resizeMode="contain"
-          style={styles.characterImage}
-        />
-      </View>
-      <QuizComponent reset={resetQuiz} winner={winner} />
+    <Background containerStyle={styles.containerStyle}>
+      <Image
+        source={
+          isCorrect
+            ? require("@/assets/images/quiz/correct.png")
+            : require("@/assets/images/quiz/congratulations.png")
+        }
+        resizeMode="contain"
+        style={styles.bannerImage}
+      />
+      <Floater src={winnerImage[String(winner)]} />
 
-      <NavigationBack
-        back={resetQuiz}
+      <QuizComponent />
+      <BackNavigationBar
         backType="reset"
+        back={resetQuiz}
+        homeType="home"
         home={() => {
           resetQuiz();
           resetNFC();
         }}
-        homeType="home"
+        style={styles.navigationBar}
       />
     </Background>
   );
@@ -59,17 +55,18 @@ export default Quiz;
 
 const styles = StyleSheet.create({
   bannerImage: {
-    aspectRatio: 2.5,
-    height: undefined,
-    width: "80%", // Adjust based on your image ratio
+    aspectRatio: 2.3,
+    marginBottom: -40,
+    marginTop: "10%",
+    width: "80%",
   },
-  characterImage: {
-    height: 200,
-    marginBottom: 0,
-    width: 200,
+
+  containerStyle: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
-  container: {
-    alignItems: "center", // Center horizontally
-    paddingTop: "20%",
+  navigationBar: {
+    marginBottom: 40,
   },
 });

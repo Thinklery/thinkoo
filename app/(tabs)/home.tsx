@@ -1,19 +1,15 @@
-import { Text, View, Linking, StyleSheet } from "react-native";
+import { View, Linking, StyleSheet, Image } from "react-native";
 import React, { useEffect } from "react";
 import { postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
 import useNfcStore from "@/utils/useNfcStore";
-import HomeFunctionButton from "@/components/HomeFunctionButton";
+import Button from "@/components/Button";
 
-import Astronaut from "@/components/Astronaut";
 import Background from "@/components/Background";
-import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const Home = () => {
-  // const plushies = usePlushieStore((state) => state.plushies);
   const setPlushie = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
-  const name = useOnboardingStore((state) => state.name);
 
   useEffect(() => {
     const handleDeepLink = async (url: string) => {
@@ -29,16 +25,31 @@ const Home = () => {
     Linking.getInitialURL().then((url) => {
       if (url) handleDeepLink(url);
     });
-  }, []);
+  }, [setNfcId, setPlushie]);
 
   return (
     <Background>
-      <Text> Hi {name}!!</Text>
       <View style={styles.container}>
-        <Astronaut />
+        <Image
+          source={require("@/assets/images/home_astro.png")}
+          style={styles.astro}
+        />
+        {/* <TouchableOpacity
+          onPress={() => getPlushieInfo("04AB165AC12A81")}
+          style={{
+            marginBottom: 20,
+            height: 100,
+            width: 100,
+            backgroundColor: "lightgray",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text>Get Plushie Info</Text>
+        </TouchableOpacity> */}
 
-        <HomeFunctionButton type="FindYourToy" />
-        <HomeFunctionButton type="WhatPlanetAreYou" />
+        <Button name="FindYourToy" />
+        <Button name="WhatPlanetAreYou" />
       </View>
     </Background>
   );
@@ -47,8 +58,13 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  astro: {
+    height: 300,
+    resizeMode: "contain",
+    width: 300,
+  },
   container: {
-    alignContent: "center",
+    alignItems: "center",
     flex: 1,
     justifyContent: "center",
   },
