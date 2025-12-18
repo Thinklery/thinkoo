@@ -1,10 +1,10 @@
 import { View, StyleSheet } from "react-native";
 import React from "react";
-import NFC from "@/components/Nfc";
+import NFC from "@/components/NFC";
 import Background from "@/components/Background";
 import PlushieInfoCard from "@/components/PlushieInfoCard";
 import useNfcStore from "@/utils/useNfcStore";
-import BackNavigationBar from "@/components/navigation/BackNavigationBar";
+import NavigationBack from "@/components/NavigationBack";
 import usePlushieStore from "@/utils/usePlushieStore";
 
 const NFCPage = () => {
@@ -14,8 +14,8 @@ const NFCPage = () => {
   return (
     <Background>
       <View style={styles.contents}>
-        <BackNavigationBar />
-        {plushies[0].name !== "" ? (
+        <NavigationBack />
+        {NfcId[0] ? (
           <PlushieInfoCard plushie={plushies[0]} />
         ) : (
           <NFC index={0} />
