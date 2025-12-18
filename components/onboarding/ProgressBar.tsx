@@ -1,10 +1,10 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import React from "react";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 
 const ProgressBar = () => {
   const currentPage = useOnboardingStore((state) => state.currentPage);
-  const totalPages = 4;
+  const totalPages = 5;
   return (
     <View style={styles.container}>
       {Array.from({ length: totalPages }).map((_, index) => (
@@ -12,8 +12,8 @@ const ProgressBar = () => {
           key={index}
           source={
             index + 2 === currentPage
-              ? require("../../assets/images/onboarding/pill.png")
-              : require("../../assets/images/onboarding/unfilledPill.png")
+              ? require("@/assets/images/onboarding/pill.png")
+              : require("@/assets/images/onboarding/unfilledPill.png")
           }
           style={styles.pill}
         />
@@ -27,12 +27,12 @@ export default ProgressBar;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "center",
     gap: 4,
+    justifyContent: "center",
   },
   pill: {
-    width: 32,
     height: 12,
     resizeMode: "contain",
+    width: 32,
   },
 });

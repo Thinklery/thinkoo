@@ -6,8 +6,8 @@ import useNfcStore from "@/utils/useNfcStore";
 import Nfc from "./Nfc";
 
 const playerArr: Record<string, any> = {
-  player1: require("@/assets/images/player1.png"),
-  player2: require("@/assets/images/player2.png"),
+  player1: require("@/assets/images/games/player1.png"),
+  player2: require("@/assets/images/games/player2.png"),
 };
 
 const playerId: Record<string, number> = {

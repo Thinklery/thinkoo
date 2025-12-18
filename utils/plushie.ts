@@ -9,7 +9,7 @@ export const getPlushieInfo = async (nfcId: string) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_SECRET}`,
+          Authorization: `Bearer ${process.env.EXPO_PUBLIC_API_SECRET}`,
         },
       }
     );
@@ -34,7 +34,7 @@ export const postPlushieInfo = async (nfcId: string, name: string) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_SECRET}`,
+            Authorization: `Bearer ${process.env.EXPO_PUBLIC_API_SECRET}`,
           },
           body: JSON.stringify({ nfcId, name }),
         }

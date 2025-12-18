@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 
 const imageMap: Record<string, any> = {
   backBordered: require("@/assets/images/navigation/backBordered.png"),
-  reset: require("@/assets/images/reset.png"),
+  reset: require("@/assets/images/navigation/reset_inactive.png"),
 };
 
 const BackButton = ({
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    width: 70, // Adjust size to fit your PNG
-    height: 70,
+    width: 48, // Adjust size to fit your PNG
+    height: 48,
     justifyContent: "center",
     alignItems: "center",
   },

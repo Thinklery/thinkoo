@@ -1,11 +1,11 @@
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
 import React from "react";
-import FirstPageButton from "./StartingButton";
+import FirstPageButton from "./Onboardng1Button";
 
 const Page1 = () => {
   return (
     <ImageBackground
-      source={require("../../assets/images/onboarding/onboarding1.png")}
+      source={require("@/assets/images/onboarding/onboarding1.png")}
       resizeMode="cover"
       style={styles.background}
     >

@@ -1,10 +1,46 @@
-// https://docs.expo.dev/guides/using-eslint/
-const { defineConfig } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
+const { defineConfig } = require("eslint/config");
+const expo = require("eslint-config-expo/flat");
+const tseslint = require("@typescript-eslint/eslint-plugin");
+const tsparser = require("@typescript-eslint/parser");
+const prettier = require("eslint-config-prettier");
+const reactNative = require("eslint-plugin-react-native");
 
 module.exports = defineConfig([
-  expoConfig,
+  expo,
+
   {
-    ignores: ['dist/*'],
+    files: ["**/*.ts", "**/*.tsx"],
+
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        project: [
+          "./tsconfig.json",
+          "./apps/*/tsconfig.json",
+          "./packages/*/tsconfig.json",
+        ],
+      },
+    },
+
+    plugins: {
+      "@typescript-eslint": tseslint,
+    },
+  },
+
+  prettier,
+
+  {
+    plugins: { "react-native": reactNative },
+    rules: {
+      ...reactNative.configs.all.rules,
+      "react-native/no-raw-text": [
+        "error",
+        {
+          skip: ["CustomText"],
+        },
+      ],
+    },
   },
 ]);

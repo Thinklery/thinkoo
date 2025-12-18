@@ -46,18 +46,19 @@
         }
       ],
       "react-native-nfc-manager",
-      "expo-font"
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
+    "owner": "thinkoo",
     "extra": {
       "router": {},
       "eas": {
         "projectId": "5be95410-b296-4c95-bbd8-4c270158852b"
       }
-    },
-    "owner": "frewin"
+    }
   }
 }

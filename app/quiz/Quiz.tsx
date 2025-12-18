@@ -10,8 +10,8 @@ import BackNavigationBar from "@/components/navigation/BackNavigationBar";
 import Floater from "@/components/Floater";
 
 const winnerImage: Record<string, any> = {
-  Mars: require("@/assets/images/mars.png"),
-  Moon: require("@/assets/images/moon.png"),
+  Mars: require("@/assets/images/games/mars.png"),
+  Moon: require("@/assets/images/games/moon.png"),
 };
 
 const Quiz = () => {
@@ -34,8 +34,8 @@ const Quiz = () => {
       <Image
         source={
           isCorrect
-            ? require("@/assets/images/correct.png")
-            : require("@/assets/images/congratulations.png")
+            ? require("@/assets/images/quiz/correct.png")
+            : require("@/assets/images/quiz/congratulations.png")
         }
         resizeMode="contain"
         style={styles.bannerImage}
@@ -51,7 +51,7 @@ const Quiz = () => {
           resetQuiz();
           resetNFC();
         }}
-        style={{ marginBottom: 20 }}
+        style={{ marginBottom: 40 }}
       />
     </Background>
   );

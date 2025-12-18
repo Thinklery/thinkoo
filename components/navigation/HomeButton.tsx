@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 
 const imageMap: Record<string, any> = {
   homeBordered: require("@/assets/images/navigation/homeBordered.png"),
-  home: require("@/assets/images/home_inactive.png"),
+  home: require("@/assets/images/navigation/home_inactive.png"),
 };
 
 
@@ -21,7 +21,7 @@ const HomeButton = ({ onPress, type }: { onPress: () => void, type: string }) =>
         }}
       >
         <Image
-          source={imageMap[type]}// Your custom PNG
+          source={imageMap[type]}
           style={styles.image}
           resizeMode="contain"
         />
@@ -34,13 +34,13 @@ export default HomeButton;
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "flex-start", // top-left alignment
+    alignItems: "flex-start",
     marginLeft: 20,
     marginTop: 20,
   },
   button: {
-    width: 60, // Adjust size to fit your PNG
-    height: 60,
+    width: 48,
+    height: 48,
     justifyContent: "center",
     alignItems: "center",
   },

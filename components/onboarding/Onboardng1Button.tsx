@@ -3,7 +3,7 @@ import React from "react";
 import useOnboardingStore from "@/utils/useOnboardingStore";
 import { router } from "expo-router";
 
-const ForwardButton = () => {
+const Onboardng1Button = () => {
   const currentPage = useOnboardingStore((state) => state.currentPage);
   const setPage = useOnboardingStore((state) => state.setPage);
 
@@ -18,20 +18,21 @@ const ForwardButton = () => {
     <View>
       <TouchableOpacity onPress={handlePress}>
         <Image
-          source={require("@/assets/images/onboarding/forwardButton.png")}
+          source={require("@/assets/images/onboarding/onboarding1Next.png")}
           resizeMode="contain"
-          style={styles.button}
+          style={styles.image}
         ></Image>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default ForwardButton;
-
 const styles = StyleSheet.create({
-  button: {
-    height: 100,
-    width: 100,
+  image: {
+    height: 200,
+    marginTop: 20,
+    width: 200,
   },
 });
+
+export default Onboardng1Button;

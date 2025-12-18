@@ -50,8 +50,8 @@ const _layout = () => {
           title: "Home",
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              activeSource={require("../../assets/images/home_active.png")}
-              inactiveSource={require("../../assets/images/home_inactive.png")}
+              activeSource={require("@/assets/images/navigation/home_active.png")}
+              inactiveSource={require("@/assets/images/navigation/home_inactive.png")}
               focused={focused}
               label="Home"
             />
@@ -65,8 +65,8 @@ const _layout = () => {
           title: "Games",
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              activeSource={require("../../assets/images/games_active.png")}
-              inactiveSource={require("../../assets/images/games_inactive.png")}
+              activeSource={require("@/assets/images/navigation/games_active.png")}
+              inactiveSource={require("@/assets/images/navigation/games_inactive.png")}
               focused={focused}
               label="Game"
             />
@@ -84,10 +84,11 @@ const styles = StyleSheet.create({
     flexDirection: "column", 
     alignItems: "center",
     justifyContent: "center",
+		gap: 10
   },
   TabIconImage: {
-    width: 72,
-    height: 72,
+    width:48,
+    height: 48,
     resizeMode: "contain",
   },
   TabBarText: {

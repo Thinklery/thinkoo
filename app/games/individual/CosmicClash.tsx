@@ -11,9 +11,9 @@ import Background from "@/components/Background";
 import winPatterns from "@/lib/winPatterns";
 import { router } from "expo-router";
 
-const GRID_IMAGE = require("@/assets/images/grid.png");
-const MoonImage = require("@/assets/images/moon.png");
-const MarsImage = require("@/assets/images/mars.png");
+const GRID_IMAGE = require("@/assets/images/games/grid.png");
+const MoonImage = require("@/assets/images/games/moon.png");
+const MarsImage = require("@/assets/images/games/mars.png");
 
 const CosmicClash = () => {
   const plushie: plushiePowerUpType = {

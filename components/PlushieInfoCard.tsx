@@ -4,8 +4,8 @@ import CustomText from "./CustomText";
 
 const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
   const imageSource = plushie.type?.type === "Moon"
-    ? require("@/assets/images/moon.png")
-    : require("@/assets/images/mars.png");
+    ? require("@/assets/images/games/moon.png")
+    : require("@/assets/images/games/mars.png");
 	console.log(imageSource)
 
   return (
@@ -18,7 +18,7 @@ const PlushieInfoCard = ({ plushie }: { plushie: PlushieInfoType }) => {
 
       <ImageBackground
         source={require("@/assets/images/quiz/quizFrame.png")}
-        style={styles.frameImage}
+        style={styles.frameImage}	
         resizeMode="contain"
       >
         <View style={styles.content}>

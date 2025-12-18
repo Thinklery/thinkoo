@@ -2,8 +2,8 @@ import { View, Image, StyleSheet } from "react-native";
 import React from "react";
 
 export const images: Record<string, any> = {
-  Mars: require("@/assets/images/mars.png"),
-  Moon: require("@/assets/images/moon.png"),
+  Mars: require("@/assets/images/games/mars.png"),
+  Moon: require("@/assets/images/games/moon.png"),
 };
 
 const PlushieImageCard = ({ type }: { type: string }) => {

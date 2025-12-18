@@ -3,17 +3,17 @@ import useNfcStore from "@/utils/useNfcStore";
 import usePlushieStore from "@/utils/usePlushieStore";
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
-import NfcManager, { NfcTech} from "react-native-nfc-manager";
-import CustomText from "./CustomText";
+import NfcManager, { NfcTech, TagEvent } from "react-native-nfc-manager";
 
 NfcManager.start();
 
-const Nfc = ({ index }: { index: number }) => {
-	const plushies = usePlushieStore((state) => state.plushies);
+const NFC = ({ index }: { index: number }) => {
+  // const plushies = usePlushieStore((state) => state.plushies);
   const setPlushies = usePlushieStore((state) => state.setPlushie);
   const setNfcId = useNfcStore((state) => state.setNfcId);
+  const [tagData, setTagData] = React.useState<TagEvent | null>(null);
 
-  const [loading, setLoading] = useState<boolean>(false);
+  const [, setLoading] = useState<boolean>();
 
   useEffect(() => {
     NfcManager.start();
@@ -23,15 +23,11 @@ const Nfc = ({ index }: { index: number }) => {
     try {
       await NfcManager.requestTechnology(NfcTech.Ndef);
       const tag = await NfcManager.getTag();
+      setTagData(tag);
       console.log("Tag found:", tag);
 
       if (tag?.id) {
-				setLoading(true);
-
         setNfcId(tag.id, index);
-        const data = await postPlushieInfo(tag.id, "Thinklery");
-        setPlushies(data, index);
-        setLoading(false);
       }
     } catch (e) {
       console.warn("Error reading tag:", e);
@@ -40,7 +36,18 @@ const Nfc = ({ index }: { index: number }) => {
     }
   }
 
-	console.log(plushies[0])
+  useEffect(() => {
+    const fetchPlushie = async () => {
+      setLoading(true);
+      const data = await postPlushieInfo(String(tagData?.id), "Thinklery");
+      setPlushies(data, index);
+      setLoading(false);
+    };
+
+    if (tagData?.id) {
+      fetchPlushie();
+    }
+  }, [tagData?.id, index, setPlushies]);
 
   return (
     <TouchableOpacity style={styles.container} onPress={readTag}>
@@ -52,16 +59,16 @@ const Nfc = ({ index }: { index: number }) => {
   );
 };
 
-export default Nfc;
+export default NFC;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
   },
   image: {
-    width: 180,
     height: 180,
     resizeMode: "contain",
+    width: 180,
   },
 });

@@ -145,7 +145,7 @@ const RocketDash = () => {
             }}
           >
             <Image
-              source={require("@/assets/images/asteroid.png")}
+              source={require("@/assets/images/games/asteroid.png")}
               style={{ width: asteroidSize, height: asteroidSize }}
               resizeMode="contain"
             />
@@ -164,7 +164,7 @@ const RocketDash = () => {
 
         {/* Spaceship */}
         <Image
-          source={require("@/assets/images/rocket.png")}
+          source={require("@/assets/images/games/rocket.png")}
           style={{
             position: "absolute",
             left: spaceshipX.current,
