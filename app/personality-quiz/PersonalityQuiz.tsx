@@ -19,7 +19,7 @@ const PersonalityQuiz = () => {
   return (
     <View>
       {options.map((option, index) => (
-        <PersonalityOptions />
+        <PersonalityOptions key={index}/>
       ))}
     </View>
   );
