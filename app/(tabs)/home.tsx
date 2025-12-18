@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { postPlushieInfo } from "@/utils/plushie";
 import usePlushieStore from "@/utils/usePlushieStore";
 import useNfcStore from "@/utils/useNfcStore";
-import HomeFunctionButton from "@/components/HomeFunctionButton";
 
 import Astronaut from "@/components/Astronaut";
 import Background from "@/components/Background";
@@ -33,12 +32,9 @@ const Home = () => {
 
   return (
     <Background>
-      <Text> Hi {name}!!</Text>
+      <Text style={styles.text}> Hi {name}!!</Text>
       <View style={styles.container}>
         <Astronaut />
-
-        <HomeFunctionButton type="FindYourToy" />
-        <HomeFunctionButton type="WhatPlanetAreYou" />
       </View>
     </Background>
   );
@@ -46,10 +42,19 @@ const Home = () => {
 
 export default Home;
 
+const white = "#FFFFFF";
+
 const styles = StyleSheet.create({
   container: {
     alignContent: "center",
     flex: 1,
     justifyContent: "center",
+  },
+  text: {
+    color: white,
+    fontSize: 24,
+    fontWeight: "600",
+    marginTop: 40,
+    textAlign: "center",
   },
 });
